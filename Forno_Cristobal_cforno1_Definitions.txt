@@ -1,0 +1,14 @@
+more:
+    The command opens a file for interactive reading, allowing scrolling and search
+
+find:
+    This command finds files under the given directory tree, recursively. You can find files by: extension, matching path pattern, modified since a certain time, etc.
+
+make:
+    Task runner for targets described in the 'Makefile'. You can use a specific Makefile by using "make --file <file>"
+
+mv:
+    Move or rename files and directories. To prevent linux from prompting confirmation use tag -f.
+
+rmdir:
+    Removes a directory. Use the tag '-p' to remove directories recursively.
