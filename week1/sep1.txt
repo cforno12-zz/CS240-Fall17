@@ -1,0 +1,17 @@
+#+TITLE: Pointers
+
+* Declaring Pointers
+  - Syntax: <data type> *<pointer name>;
+  - Bound to a type
+    - you can create a void pointer called "casting"
+* Assigning a Value to a Pointer variable
+  - value of a pointer is a memory address
+  - Assign to a pointer the address of an exisiting variable
+    - src_C++{ int number = 17; intPointer = &number; cout << intPointer; }
+    - This prints out the memory address, not "17".
+  - Use 'new' to request space at run-time.
+    - intPointer = new int; -- gives the intPointer an anonymous VALUE.
+* Dereferencing
+  - *intPointer = 36;
+  - '*' = goes from address to value (also declares a pointer type)
+  - '&' = goes from value to address

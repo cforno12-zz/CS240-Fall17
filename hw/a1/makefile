@@ -1,0 +1,4 @@
+all: Donate
+
+Donate:
+	g++
