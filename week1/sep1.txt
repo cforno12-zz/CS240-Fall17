@@ -14,4 +14,8 @@
 * Dereferencing
   - *intPointer = 36;
   - '*' = goes from address to value (also declares a pointer type)
-  - '&' = goes from value to address
+  - '&' = goes from value to address, used in funtction parameters to actually use the variable instead of a copy of it
+* C++ Arrays
+  - dynamicArrya = new int [capacity];
+  - list[1]; == *(list+1);
+  -
