@@ -46,7 +46,7 @@ void Donor::view(){
 
 void Donor::donate(){
 
-    cout << "Enter Amount to Donate: ";
+    cout << "\nEnter Amount to Donate: ";
     cin  >> amount_donated;
     tot += amount_donated;
     printf("$%.2f donated.\n\n", amount_donated);
