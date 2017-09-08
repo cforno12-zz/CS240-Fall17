@@ -39,7 +39,6 @@ void Donor::view(){
     cout << first_name << " " << last_name << ": age " << age << "\n";
     cout << street_num << " " << street_name << "\n";
     cout << town << ", NY " << zip_code << "\n";
-    // Ask professor for formatting 2 decimal places....
     cout << "Current Amount Donated: $";
     printf("%.2f", tot);
     cout << "\n\n";
