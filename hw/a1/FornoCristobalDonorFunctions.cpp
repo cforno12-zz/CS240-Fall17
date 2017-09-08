@@ -39,6 +39,7 @@ void Donor::view(){
     cout << first_name << " " << last_name << ": age " << age << "\n";
     cout << street_num << " " << street_name << "\n";
     cout << town << ", NY " << zip_code << "\n";
+
     cout << "Current Amount Donated: $";
     printf("%.2f", tot);
     cout << "\n\n";
