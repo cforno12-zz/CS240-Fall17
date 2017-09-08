@@ -28,5 +28,6 @@ int main(int argc, const char* argv[]){
             cout << "Command not recognized. Please try again.\n\n";
         }
     }
+    cout << "\n";
     exit(0);
 }
