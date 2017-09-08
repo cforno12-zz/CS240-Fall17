@@ -22,10 +22,10 @@ void Donor::add(){
     cin >> first_name;
     cout << "Age: ";
     cin >> age;
-    cout << "Street Name: ";
-    cin >> street_name;
     cout << "House Number: ";
     cin >> street_num;
+    cout << "Street Name: ";
+    cin >> street_name;
     cout << "Town: ";
     cin >> town;
     cout << "Zip Code: ";
