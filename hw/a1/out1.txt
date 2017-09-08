@@ -1,0 +1,57 @@
+
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+: Last Name: First Name: Age: House Number: Street Name: Town: Zip Code: 
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+: 
+Enter Amount to Donate: $110.45 donated.
+
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+:  $110.45
+
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+: 
+Enter Amount to Donate: $40.15 donated.
+
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+:  $150.60
+
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+: Donor Info
+John Doe: age 20
+15 Chapin
+Binghamton, NY 13905
+Current Amount Donated: $150.60
+
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+: Last Name: First Name: Age: House Number: Street Name: Town: Zip Code: 
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+: Donor Info
+John Doe: age 21
+33 Clarke
+Binghamton, NY 13905
+Current Amount Donated: $150.60
+
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+:  $150.60
+
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+: 
+Enter Amount to Donate: $25.50 donated.
+
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+:  $176.10
+
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+: 

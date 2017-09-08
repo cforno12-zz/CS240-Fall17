@@ -1,0 +1,87 @@
+
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+: Last Name: First Name: Age: House Number: Street Name: Town: Zip Code: 
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+: 
+Enter Amount to Donate: $110.45 donated.
+
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+:  $110.45
+
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+: 
+Enter Amount to Donate: $20.35 donated.
+
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+: Command not recognized. Please try again.
+
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+: Command not recognized. Please try again.
+
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+: Command not recognized. Please try again.
+
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+: Command not recognized. Please try again.
+
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+: Command not recognized. Please try again.
+
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+: Command not recognized. Please try again.
+
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+: Command not recognized. Please try again.
+
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+: Command not recognized. Please try again.
+
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+:  $130.80
+
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+: 
+Enter Amount to Donate: $25.40 donated.
+
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+: Donor Info
+John Doe: age 20
+15 Chapin
+Binghamton, NY 13905
+Current Amount Donated: $156.20
+
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+: 
+Enter Amount to Donate: $155.20 donated.
+
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+: Donor Info
+John Doe: age 20
+15 Chapin
+Binghamton, NY 13905
+Current Amount Donated: $311.40
+
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+:  $311.40
+
+Enter a command. 
+Choose from ["Add" "Manage" "View" "Donate" "Total" "Quit"]
+: 
