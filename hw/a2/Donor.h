@@ -12,6 +12,10 @@ class Donor {
     float amount_donated;
  public:
     Donor();
+    bool validate_userid();
+    bool validate_password();
+    bool validate_last_name();
+    bool validate_first_name();
     void login();
     void add();
     void save();
