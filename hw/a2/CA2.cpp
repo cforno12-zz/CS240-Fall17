@@ -15,8 +15,10 @@ int main(){
     donor->add();
     donor->view();*/
 
-	DonorDatabase * data = new DonorDatabase();
-    data->add();
+	DonorDatabase * database_ptr = new DonorDatabase();
+    database_ptr->add();
+    Donor test = database_ptr->access_data(0);
+    test.view();
 
     cout << "\n";
     exit(0);

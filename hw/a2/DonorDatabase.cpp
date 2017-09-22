@@ -19,7 +19,7 @@ DonorDatabase::DonorDatabase(){
     donated = 0.00;
     userid = "";
     password = "";
-    donor_indx = 0;
+    donor_indx = -1;
 }
 
 bool DonorDatabase::validate_userid(){

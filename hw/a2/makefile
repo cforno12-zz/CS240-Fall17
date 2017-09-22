@@ -1,7 +1,7 @@
 all: Donor
 
 link: Donor.o DonorDatabase.o CA2.o  DonorDatabase.h DonorDatabase.cpp Donor.cpp CA2.cpp Donor.h
-	g++ Donor.o CA2.o DonorDatabase.o -o Cris_Donor.exe
+	g++ -o Cris_Donor.exe Donor.o CA2.o DonorDatabase.o 
 
 compile: Donor.h DonorDatabase.h DonorDatabase.cpp Donor.cpp CA2.cpp
 	g++ -c -Wall Donor.cpp

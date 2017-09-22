@@ -15,6 +15,9 @@ class DonorDatabase {
     float donated;
  public:
     DonorDatabase();
+    Donor access_data(int idx){
+        return data[idx];
+    }
     bool validate_userid();
     bool validate_password();
     bool validate_last_name();
