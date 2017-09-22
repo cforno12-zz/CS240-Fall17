@@ -5,11 +5,6 @@
 
 using namespace std;
 
-#define CHAR "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890"
-#define LETTERS "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-#define NUM "0123456789"
-#define SPECIAL "!\"#$%&'()*+,-./:;<=>?@[]^_`{|}~"
-
 Donor::Donor(){
     last_name = "";
     first_name = "";
