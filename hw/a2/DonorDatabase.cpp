@@ -1,14 +1,15 @@
-#include "stdlib.h"
+#include <stdlib.h>
 #include <iostream>
+#include <fstream>
+#include <ctype.h>
 #include "DonorDatabase.h"
-#define MAX_DONORS 1000
 
 #define CHAR "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890"
 #define LETTERS "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 #define NUM "0123456789"
 #define SPECIAL "!\"#$\%&'()*+,-./:;<=>?@[]^_`{|}~"
 
-DonorDatabase::DonorDatabase(){
+DonorDatabase::DonorDatabase(int num_donors){
     last_name = "";
     first_name = "";
     street_name = "";
@@ -19,9 +20,14 @@ DonorDatabase::DonorDatabase(){
     donated = 0.00;
     userid = "";
     password = "";
-    donor_indx = -1;
+    donor_indx = 0;
+    data = new Donor[num_donors];
 }
 
+
+Donor DonorDatabase::access_data(int idx){
+        return data[idx];
+}
 bool DonorDatabase::validate_userid(){
     bool retVal = false;
     if(userid.length() >= 5){
@@ -62,14 +68,13 @@ void DonorDatabase::login(){
     while (true){
         cout << "User ID: ";
         cin >> userid;
-        int size = find_num_donors();
         bool found = false;
         if (validate_userid()){
-            for (int i = 0; i < size; i++) {
+            for (int i = 0; i < donor_indx; i++) {
                 if(userid == data[i].getuserid()){
-                    donor_indx = i;
-                    break;
+                    curr_donor = i;
                     found = true;
+                    break;
                 }
             }
             if(found){
@@ -86,7 +91,7 @@ void DonorDatabase::login(){
         cout << "Password: ";
         cin >> password;
         if(validate_password()){
-            if(data[donor_indx].getpassword() == password){
+            if(data[curr_donor].getpassword() == password){
                 break;
             } else {
                 cout << "Wrong password." << endl;
@@ -94,8 +99,26 @@ void DonorDatabase::login(){
        }
        password = "";
     }
-    cout << endl;
-    //go to 2nd level of interface
+    string command = "";
+    cout << "Welcome " << data[curr_donor].getuserid() << " to your donation page!" << endl;
+    while(command != "Logout"){
+        cout << "Enter a command:\nChoose from: ['Manage', 'Passwd', 'View', 'Donate', 'Total', or 'Logout']\n\t:";
+        cin >> command;
+        if(command == "Manage"){
+            data[curr_donor].manage();
+        } else if (command == "Passwd"){
+            data[curr_donor].change_password();
+        } else if(command == "View"){
+            data[curr_donor].view();
+        } else if(command == "Donate"){
+            data[curr_donor].donate();
+        } else if(command== "Total"){
+            data[curr_donor].view();
+        } else if(command != "Logout"){
+            cout << "Command not recognized. Please input a valid command." << endl;
+        }
+        cout << "Logging out..." << endl;
+    }
 }
 
 
@@ -134,21 +157,27 @@ bool DonorDatabase::validate_zip_code(){
     }
     return retVal;
 }
-int DonorDatabase::find_num_donors(){
-    int retVal = 0;
-    Donor* test = new Donor();
-    for (int i = 0; i < MAX_DONORS; i++) {
-        if(data[i].comparedonor(*test)){
-            retVal = i;
-            break;
-        }
-    }
-    return retVal;
-}
-
 
 void DonorDatabase::add(){
     Donor * curr = new Donor();
+    while(true){
+        cout << "User ID: ";
+        cin >> userid;
+        if(validate_userid()){
+            curr->setuserid(userid);
+            break;
+        }
+        userid="";
+    }
+    while(true){
+        cout << "Password: ";
+        cin >> password;
+        if(validate_password()){
+            curr->setpassword(password);
+            break;
+        }
+        password="";
+    }
     while(true){
         cout << "Last Name: ";
         cin >> last_name;
@@ -218,7 +247,8 @@ void DonorDatabase::add(){
         }
     }
     //put new added donor inside array
-    data[donor_indx+1] = *curr;
+    data[donor_indx] = *curr;
+    donor_indx += 1;
     cout << "\n";
 
 }

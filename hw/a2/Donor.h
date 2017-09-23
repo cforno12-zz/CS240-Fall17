@@ -14,6 +14,7 @@ class Donor {
     float donated;
  public:
     Donor();
+    //getters
     string getlast_name();
     string getfirst_name();
     string getstreet_name();
@@ -25,6 +26,7 @@ class Donor {
     int getage();
     int getstreet_num();
     float getdonated();
+    //setters
     void setlast_name(string ln);
     void setfirst_name(string fn);
     void setstreet_name(string sn);
@@ -36,9 +38,10 @@ class Donor {
     void setage(int a);
     void setstreet_num(int sn);
     void setdonated(float d);
+    //other functions
     bool comparedonor(const Donor &other);
-    void add();
     void manage();
+    void change_password();
     void view();
     void donate();
     void total();

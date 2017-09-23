@@ -112,6 +112,13 @@ bool Donor::comparedonor(const Donor &other){
     return retVal;
 }
 
+void Donor::manage(){
+    /*change some or all of the donor information (other than the userid and password)
+associated with the record for the donor who is logged in. Please allow the user to select which fields to
+update, keeping all other information the same.*/
+    
+}
+
 void Donor::view(){
 
     cout << "Donor Info\n";
@@ -120,18 +127,26 @@ void Donor::view(){
     cout << town << ", " << state << " " << zip_code << endl;
 
     cout << "Current Amount Donated: $";
-    //    printf("%.2f", tot);
+    printf("%.2f", donated);
     cout << "\n\n";
 }
 
 void Donor::donate(){
-
-    cout << "\nEnter Amount to Donate: ";
-    cin  >> donated;
-    //    tot += amount_donated;
-    printf("$%.2f donated.\n\n", donated);
+    float temp_donated;
+    while(true){
+            cout << "\nEnter Amount to Donate: ";
+            cin  >> temp_donated;
+            if(temp_donated < 0){
+                cout << "You cannot donate negative amount of money." << endl;
+            } else if((temp_donated + donated) > 5000){
+                cout << "You cannot donate more than $5,000." << endl;
+                cout << "If you would like to donate $5,000, please donate " << (5000.0 - donated) << " when prompted." << endl;
+            }
+    }
+    printf("You have just donated $%.2f. Thank you!\n", donated);
 }
 
 void Donor::total(){
-    //    printf(" $%.2f\n\n", tot);
+    cout << last_name;
+    printf(" $%.2f\n", donated);
 }

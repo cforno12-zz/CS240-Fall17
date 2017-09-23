@@ -9,21 +9,18 @@ using namespace std;
 
 class DonorDatabase {
  private:
-    Donor data[MAX_DONORS];
+    Donor* data;
     string last_name, first_name, street_name, town, zip_code, userid, password, state;
-    int age, street_num, donor_indx;
+    int age, street_num, donor_indx, curr_donor;
     float donated;
  public:
-    DonorDatabase();
-    Donor access_data(int idx){
-        return data[idx];
-    }
+    DonorDatabase(int donor_num);
+    Donor access_data(int idx);
     bool validate_userid();
     bool validate_password();
     bool validate_last_name();
     bool validate_first_name();
     bool validate_zip_code();
-    int find_num_donors();  //returns the number of Donors in the array minus 1
 	void login();
     void add();
     void save();
