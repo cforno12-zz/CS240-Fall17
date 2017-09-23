@@ -11,7 +11,7 @@ class DonorDatabase {
  private:
     Donor* data;
     string last_name, first_name, street_name, town, zip_code, userid, password, state;
-    int age, street_num, donor_indx, curr_donor;
+    int age, street_num, donor_indx, max_donor;
     float donated;
  public:
     DonorDatabase(int donor_num);

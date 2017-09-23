@@ -21,6 +21,7 @@ DonorDatabase::DonorDatabase(int num_donors){
     userid = "";
     password = "";
     donor_indx = 0;
+    max_donor = num_donors;
     data = new Donor[num_donors];
 }
 
@@ -65,6 +66,7 @@ bool DonorDatabase::validate_password(){
 }
 
 void DonorDatabase::login(){
+    int curr_donor = -1;
     while (true){
         cout << "User ID: ";
         cin >> userid;
@@ -113,11 +115,13 @@ void DonorDatabase::login(){
         } else if(command == "Donate"){
             data[curr_donor].donate();
         } else if(command== "Total"){
-            data[curr_donor].view();
+            data[curr_donor].total();
         } else if(command != "Logout"){
             cout << "Command not recognized. Please input a valid command." << endl;
         }
-        cout << "Logging out..." << endl;
+        if(command=="Logout"){
+            cout << "Logging out..." << endl;
+        }
     }
 }
 
@@ -160,12 +164,31 @@ bool DonorDatabase::validate_zip_code(){
 
 void DonorDatabase::add(){
     Donor * curr = new Donor();
+    cout << "MAX: " << endl;
+    data[max_donor-1].view();
+    cout << "CURR: " << endl;
+    curr->view();
+    if(!(curr->comparedonor(data[max_donor-1]))){
+        cout << "Maximum donors reached. You cannot add another donor." << endl;
+        return;
+    }
     while(true){
         cout << "User ID: ";
         cin >> userid;
         if(validate_userid()){
-            curr->setuserid(userid);
-            break;
+            bool already_in_use = false;
+            for (int i=0; i < donor_indx; i++){
+                if(data[i].getuserid() == userid){
+                    cout << "User ID is already in use. Please choose another User ID." << endl;
+                    already_in_use = true;
+                    break;
+                }
+            }
+            if(!already_in_use){
+                curr->setuserid(userid);
+                break;
+            }
+
         }
         userid="";
     }

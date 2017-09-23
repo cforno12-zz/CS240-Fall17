@@ -84,7 +84,7 @@ void Donor::setstreet_num(int sn){
 void Donor::setdonated(float d){
     donated = d;
 }
-bool Donor::comparedonor(const Donor &other){
+bool Donor::comparedonor(Donor &other){
     bool retVal = false;
     if(last_name == other.last_name){
         if(first_name == other.first_name){
@@ -112,13 +112,104 @@ bool Donor::comparedonor(const Donor &other){
     return retVal;
 }
 
+
+
 void Donor::manage(){
     /*change some or all of the donor information (other than the userid and password)
 associated with the record for the donor who is logged in. Please allow the user to select which fields to
 update, keeping all other information the same.*/
-    
+    string command;
+    while(true){
+        cout << "What field would you like to change?" << endl;
+        cout << "\tYou can choose from: ['Last' -- to change last name, 'First' -- to change first name, 'Street' --to change street name, 'Town' -- to change town, 'Zip' -- to change zip code, 'State' -- to change the state, 'Age' -- to change age, or 'House' -- to change house number]\n\t\t:";
+        cin >> command;
+        if(command == "Last"){
+            cout << "What would you like to change your last name to?: ";
+            cin >> last_name;
+            if(manage_again()){
+                continue;
+            } else {
+                break;
+            }
+        } else if(command == "First"){
+            cout << "What would you like to change your first name to?: ";
+            cin >> first_name;
+            if(manage_again()){
+                continue;
+            } else {
+                break;
+            }
+        } else if(command == "Street"){
+            cout << "What would you like to change your street name to?: ";
+            cin >> street_name;
+            if(manage_again()){
+                continue;
+            } else {
+                break;
+            }
+        } else if(command == "Town"){
+            cout << "What would you like to change your town to?: ";
+            cin >> town;
+            if(manage_again()){
+                continue;
+            } else {
+                break;
+            }
+        } else if(command == "Zip"){
+            cout << "What would you like to change your zip code to?: ";
+            cin >> zip_code;
+            if(manage_again()){
+                continue;
+            } else {
+                break;
+            }
+        } else if(command == "State"){
+            cout << "What would you like to change your state to?: ";
+            cin >> state;
+            if(manage_again()){
+                continue;
+            } else {
+                break;
+            }
+        } else if(command == "Age"){
+            cout << "What would you like to change your age to?: ";
+            cin >> age;
+            if(manage_again()){
+                continue;
+            } else {
+                break;
+            }
+        } else if(command == "House"){
+            cout << "What would you like to change your house number to?: ";
+            cin >> street_num;
+            if(manage_again()){
+                continue;
+            } else {
+                break;
+            }
+        } else {
+            cout << "Command not recognized, remember to capatilize the command." << endl;
+        }
+    }
 }
 
+bool Donor::manage_again(){
+    bool retVal = false;
+    string cmd;
+    cout << endl;
+    while(true){
+        cout << "Would you like to change another field (Yes/No): ";
+        cin >> cmd;
+        if(cmd == "Yes"){
+            retVal = true;
+            break;
+        } else {
+            cout << "Unknown command." << endl;
+            continue;
+        }
+    }
+    return retVal;
+}
 void Donor::view(){
 
     cout << "Donor Info\n";
@@ -149,4 +240,25 @@ void Donor::donate(){
 void Donor::total(){
     cout << last_name;
     printf(" $%.2f\n", donated);
+}
+
+void Donor::change_password(){
+    string curr, temp, temp02;
+    cout << "Please enter your current password: ";
+    cin >> curr;
+    if(curr == password){
+        cout << "Please enter your new password: ";
+        cin >> temp;
+        cout << "Confirm your new password: ";
+        cin >> temp02;
+        if(temp == temp02){
+            password = temp;
+            cout << "New password has been set." << endl;
+        } else {
+            cout << "Passwords do not match." << endl;
+            cout << endl;
+        }
+    } else {
+        cout << "Wrong password." << endl;
+    }
 }

@@ -39,9 +39,9 @@ class Donor {
     void setstreet_num(int sn);
     void setdonated(float d);
     //other functions
-    bool comparedonor(const Donor &other);
+    bool comparedonor(Donor &other);
     void manage();
-    void change_password();
+    bool manage_again();
     void view();
     void donate();
     void total();
