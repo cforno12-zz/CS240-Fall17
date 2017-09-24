@@ -285,12 +285,12 @@ void DonorDatabase::save(){
       file << data[i].getlast_name() << endl;
       file << data[i].getfirst_name() << endl;
       file << data[i].getage() << endl;
-      // file << data[i].getstreet_num() << endl;
-      // file << data[i].getstreet_name() << endl;
+      file << data[i].getstreet_num() << endl;
+      file << data[i].getstreet_name() << endl;
       file << data[i].gettown() << endl;
       file << data[i].getzip_code() << endl;
       file << data[i].getstate() << endl;
-      //file << data[i].getdonated() << endl;
+      file << data[i].getdonated() << endl;
     }
     file.close();
   } else {
@@ -305,44 +305,41 @@ void DonorDatabase::load(){
   if(file.is_open()){
     // this varibale indicates that there are 12 lines of text per donor
     while(getline(file, temp_line)){
-      //cout << "HERE01" << endl;
-      // cout << "LINE: " << temp_line << endl;
-      // int idx = stoi(temp_line);
-      // cout << "NUMBER: " << idx <<  endl;
+      int idx = stoi(temp_line);
       //USERID
       getline(file, temp_line);
-      data[0].setuserid(temp_line);
+      data[idx].setuserid(temp_line);
       //PASSWORD
       getline(file, temp_line);
-      data[0].setpassword(temp_line);
+      data[idx].setpassword(temp_line);
       //LAST NAME
       getline(file, temp_line);
-      data[0].setlast_name(temp_line);
+      data[idx].setlast_name(temp_line);
       //FIRST NAME
       getline(file, temp_line);
-      data[0].setfirst_name(temp_line);
+      data[idx].setfirst_name(temp_line);
       //AGE
-      // getline(file, temp_line);
-      // data[idx].setage(stoi(temp_line));
-      // //STREET NUMBER
-      // getline(file, temp_line);
-      // data[idx].setstreet_num(stoi(temp_line));
+      getline(file, temp_line);
+      data[idx].setage(stoi(temp_line));
+      //STREET NUMBER
+      getline(file, temp_line);
+      data[idx].setstreet_num(stoi(temp_line));
       //STREET NAME
       getline(file, temp_line);
-      data[0].setstreet_name(temp_line);
+      data[idx].setstreet_name(temp_line);
       //TOWN
       getline(file, temp_line);
-      data[0].settown(temp_line);
+      data[idx].settown(temp_line);
       //ZIP CODE
       getline(file, temp_line);
-      data[0].setzip_code(temp_line);
+      data[idx].setzip_code(temp_line);
       //STATE
       getline(file, temp_line);
-      data[0].setstate(temp_line);
+      data[idx].setstate(temp_line);
       //DONATED
-      //getline(file, temp_line);
-      //TODO: convert string to float
-      //data[idx].setdonated();
+      getline(file, temp_line);
+      data[idx].setdonated(stof(temp_line));
+      donor_indx++;
     }
     file.close();
   } else {
@@ -353,6 +350,7 @@ void DonorDatabase::load(){
 void DonorDatabase::report(){
     cout << "There are currently " << donor_indx + 1 << " in the database:" << endl;
     cout << "Here are the donors:" << endl;
+    cout << endl;
     for (int i = 0; i < donor_indx; i++){
         cout << "Donor #" << i + 1 << endl;
         data[i].view();
