@@ -23,8 +23,8 @@ class DonorDatabase {
     bool validate_zip_code();
     void login();
     void add();
-    void save();
-    void load();
+    void save(string file_name);
+    void load(string file_name);
     void report();
 };
 #endif

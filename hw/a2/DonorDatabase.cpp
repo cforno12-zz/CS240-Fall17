@@ -272,83 +272,101 @@ void DonorDatabase::add(){
 
 }
 
-void DonorDatabase::save(){
+void DonorDatabase::save(string file_name){
   //this function is supposed to save the entire database of donors in a text file
   //why mike lewis? why did you make us do this?
   ofstream file;
-  file.open("data.txt", ios::out);
+  string response = "";
+  file.open(file_name, ios::out);
   if(file.is_open()){
-    for (int i = 0; i < donor_indx; i++){
-      file << i << endl;
-      file << data[i].getuserid() << endl;
-      file << data[i].getpassword() << endl;
-      file << data[i].getlast_name() << endl;
-      file << data[i].getfirst_name() << endl;
-      file << data[i].getage() << endl;
-      file << data[i].getstreet_num() << endl;
-      file << data[i].getstreet_name() << endl;
-      file << data[i].gettown() << endl;
-      file << data[i].getzip_code() << endl;
-      file << data[i].getstate() << endl;
-      file << data[i].getdonated() << endl;
-    }
-    file.close();
+      cout << "File exists, would you like to override it? (Yes/No)" << endl;
+      cin >> response;
+      if(response == "Yes"){
+          for (int i = 0; i < donor_indx; i++){
+              file << i << endl;
+              file << data[i].getuserid() << endl;
+              file << data[i].getpassword() << endl;
+              file << data[i].getlast_name() << endl;
+              file << data[i].getfirst_name() << endl;
+              file << data[i].getage() << endl;
+              file << data[i].getstreet_num() << endl;
+              file << data[i].getstreet_name() << endl;
+              file << data[i].gettown() << endl;
+              file << data[i].getzip_code() << endl;
+              file << data[i].getstate() << endl;
+              file << data[i].getdonated() << endl;
+          }
+          file.close();
+
+      }  else if (response == "No"){
+          return;
+      }
   } else {
-    cout << "File is not detected. Please make sure that there is a \"data.txt\" file in the same directory as this program." << endl;
+    cout << "File is not detected." << endl;
+    cout << "Would you like to like to choose another file? (Yes/No)" << endl;
+    cin >> response;
+    if(response == "Yes"){
+        string new_file_name;
+        cout << "What is the new file you would like to save to?";
+        cin >> new_file_name;
+        save(new_file_name);
+    } else if (response == "No"){
+        return;
+    }
   }
 }
 
-void DonorDatabase::load(){
+void DonorDatabase::load(string file_name){
   //this function reads the text file and puts the information in the data array
-  ifstream file ("data.txt");
-  string temp_line;
-  if(file.is_open()){
-    // this varibale indicates that there are 12 lines of text per donor
-    while(getline(file, temp_line)){
-      int idx = stoi(temp_line);
-      //USERID
-      getline(file, temp_line);
-      data[idx].setuserid(temp_line);
-      //PASSWORD
-      getline(file, temp_line);
-      data[idx].setpassword(temp_line);
-      //LAST NAME
-      getline(file, temp_line);
-      data[idx].setlast_name(temp_line);
-      //FIRST NAME
-      getline(file, temp_line);
-      data[idx].setfirst_name(temp_line);
-      //AGE
-      getline(file, temp_line);
-      data[idx].setage(stoi(temp_line));
-      //STREET NUMBER
-      getline(file, temp_line);
-      data[idx].setstreet_num(stoi(temp_line));
-      //STREET NAME
-      getline(file, temp_line);
-      data[idx].setstreet_name(temp_line);
-      //TOWN
-      getline(file, temp_line);
-      data[idx].settown(temp_line);
-      //ZIP CODE
-      getline(file, temp_line);
-      data[idx].setzip_code(temp_line);
-      //STATE
-      getline(file, temp_line);
-      data[idx].setstate(temp_line);
-      //DONATED
-      getline(file, temp_line);
-      data[idx].setdonated(stof(temp_line));
-      donor_indx++;
+    ifstream file (file_name);
+    string temp_line;
+    if(file.is_open()){
+        // this varibale indicates that there are 12 lines of text per donor
+        while(getline(file, temp_line)){
+            int idx = stoi(temp_line);
+            //USERID
+            getline(file, temp_line);
+            data[idx].setuserid(temp_line);
+            //PASSWORD
+            getline(file, temp_line);
+            data[idx].setpassword(temp_line);
+            //LAST NAME
+            getline(file, temp_line);
+            data[idx].setlast_name(temp_line);
+            //FIRST NAME
+            getline(file, temp_line);
+            data[idx].setfirst_name(temp_line);
+            //AGE
+            getline(file, temp_line);
+            data[idx].setage(stoi(temp_line));
+            //STREET NUMBER
+            getline(file, temp_line);
+            data[idx].setstreet_num(stoi(temp_line));
+            //STREET NAME
+            getline(file, temp_line);
+            data[idx].setstreet_name(temp_line);
+            //TOWN
+            getline(file, temp_line);
+            data[idx].settown(temp_line);
+            //ZIP CODE
+            getline(file, temp_line);
+            data[idx].setzip_code(temp_line);
+            //STATE
+            getline(file, temp_line);
+            data[idx].setstate(temp_line);
+            //DONATED
+            getline(file, temp_line);
+            data[idx].setdonated(stof(temp_line));
+            donor_indx++;
+        }
+        file.close();
+    } else {
+        cout << "File is not detected. Please make sure that there is a \"data.txt\" file in the same directory as this program." << endl;
     }
-    file.close();
-  } else {
-    cout << "File is not detected. Please make sure that there is a \"data.txt\" file in the same directory as this program." << endl;
-  }
 }
 
 void DonorDatabase::report(){
-    cout << "There are currently " << donor_indx + 1 << " in the database:" << endl;
+    cout << "There are currently " << donor_indx << " in the database:" << endl;
     cout << "Here are the donors:" << endl;
     cout << endl;
     for (int i = 0; i < donor_indx; i++){
