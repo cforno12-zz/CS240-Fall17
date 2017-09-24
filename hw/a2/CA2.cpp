@@ -26,7 +26,7 @@ int main(int argc, char *argv[]){
         cout << "ERROR, max numbers of donors is 1,000" << endl;
         exit(0);
     }
-    // string file = argv[2];
+    //string file = argv[2];
 
     DonorDatabase * database_ptr = new DonorDatabase(donors);
     string command = "";
@@ -38,15 +38,15 @@ int main(int argc, char *argv[]){
         if(command == "Login"){
             database_ptr->login();
         } else if(command == "Add"){
-            database_ptr->add();
-        // } else if(command == "Save"){
-        //     database_ptr->save();
-        // } else if(command == "Load"){
-        //     database_ptr->load();
-        // } else if(command == "Report"){
-        //     database_ptr->report();
+          database_ptr->add();
+        } else if(command == "Save"){
+          database_ptr->save();
+        } else if(command == "Load"){
+          database_ptr->load();
+        } else if(command == "Report"){
+          database_ptr->report();
         } else if(command != "Quit"){
-            cout << "Command not recognized. Please input a valid command." << endl;
+          cout << "Command not recognized. Please input a valid command." << endl;
         }
     }
 
