@@ -41,6 +41,7 @@ int main(int argc, char *argv[]){
 
         cout << "Welcome to my donation page!" << endl;
         while(command != "Quit"){
+            cout << endl;
             cout << "Enter a command:\nChoose from: ['Login', 'Add', 'Save', 'Load', 'Report', or 'Quit']\n\t: ";
             cin >> command;
             if(command == "Login"){

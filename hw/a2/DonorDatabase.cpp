@@ -102,9 +102,11 @@ void DonorDatabase::login(){
        password = "";
     }
     string command = "";
+    cout << endl;
     cout << "Welcome " << data[curr_donor].getuserid() << " to your donation page!" << endl;
     while(command != "Logout"){
-        cout << "Enter a command:\nChoose from: ['Manage', 'Passwd', 'View', 'Donate', 'Total', or 'Logout']\n\t:";
+        cout << endl;
+        cout << "Enter a command:\nChoose from: ['Manage', 'Passwd', 'View', 'Donate', 'Total', or 'Logout']\n\t: ";
         cin >> command;
         if(command == "Manage"){
             data[curr_donor].manage();
@@ -273,47 +275,57 @@ void DonorDatabase::add(){
 }
 
 void DonorDatabase::save(string file_name){
-  //this function is supposed to save the entire database of donors in a text file
-  //why mike lewis? why did you make us do this?
-  ofstream file;
-  string response = "";
-  file.open(file_name, ios::out);
-  if(file.is_open()){
-      cout << "File exists, would you like to override it? (Yes/No)" << endl;
-      cin >> response;
-      if(response == "Yes"){
-          for (int i = 0; i < donor_indx; i++){
-              file << i << endl;
-              file << data[i].getuserid() << endl;
-              file << data[i].getpassword() << endl;
-              file << data[i].getlast_name() << endl;
-              file << data[i].getfirst_name() << endl;
-              file << data[i].getage() << endl;
-              file << data[i].getstreet_num() << endl;
-              file << data[i].getstreet_name() << endl;
-              file << data[i].gettown() << endl;
-              file << data[i].getzip_code() << endl;
-              file << data[i].getstate() << endl;
-              file << data[i].getdonated() << endl;
-          }
-          file.close();
+    //this function is supposed to save the entire database of donors in a text file
+    //why mike lewis? why did you make us do this?
+    ofstream file;
+    string response = "";
+    while(true) {
+        cout << "File exists, would you like to override it? (Yes/No)" << endl;
+        cin >> response;
+        if(response == "Yes"){
+            file.open(file_name, ios::out);
+            if(file.is_open()){
+                for (int i = 0; i < donor_indx; i++){
+                    file << i << endl;
+                    file << data[i].getuserid() << endl;
+                    file << data[i].getpassword() << endl;
+                    file << data[i].getlast_name() << endl;
+                    file << data[i].getfirst_name() << endl;
+                    file << data[i].getage() << endl;
+                    file << data[i].getstreet_num() << endl;
+                    file << data[i].getstreet_name() << endl;
+                    file << data[i].gettown() << endl;
+                    file << data[i].getzip_code() << endl;
+                    file << data[i].getstate() << endl;
+                    file << data[i].getdonated() << endl;
+                }
+                file.close();
+                break;
+            } else {
+                cout << "File is not detected." << endl;
+                while(true){
+                    cout << "Would you like to like to choose another file? (Yes/No)" << endl;
+                    cin >> response;
+                    if(response == "Yes"){
+                        string new_file_name;
+                        cout << "What is the new file you would like to save to?";
+                        cin >> new_file_name;
+                        save(new_file_name);
+                        break;
+                    } else if (response == "No"){
+                        break;
+                    } else {
+                        cout << "Unknown command, please type \"Yes\" or \"No\"." << endl;
+                    }
+                }
 
-      }  else if (response == "No"){
-          return;
-      }
-  } else {
-    cout << "File is not detected." << endl;
-    cout << "Would you like to like to choose another file? (Yes/No)" << endl;
-    cin >> response;
-    if(response == "Yes"){
-        string new_file_name;
-        cout << "What is the new file you would like to save to?";
-        cin >> new_file_name;
-        save(new_file_name);
-    } else if (response == "No"){
-        return;
+            }
+        } else if (response == "No"){
+            break;
+        } else {
+            cout << "Unknown command, please type \"Yes\" or \"No\"." << endl;
+        }
     }
-  }
 }
 
 void DonorDatabase::load(string file_name){
@@ -321,9 +333,13 @@ void DonorDatabase::load(string file_name){
     ifstream file (file_name);
     string temp_line;
     if(file.is_open()){
+        donor_indx = 0;
         // this varibale indicates that there are 12 lines of text per donor
         while(getline(file, temp_line)){
             int idx = stoi(temp_line);
+            if(idx > (max_donor-1)){
+                break;
+            }
             //USERID
             getline(file, temp_line);
             data[idx].setuserid(temp_line);

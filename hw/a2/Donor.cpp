@@ -3,6 +3,11 @@
 #include <string>
 #include "Donor.h"
 
+#define CHAR "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890"
+#define LETTERS "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+#define NUM "0123456789"
+#define SPECIAL "!\"#$\%&'()*+,-./:;<=>?@[]^_`{|}~"
+
 using namespace std;
 
 Donor::Donor(){
@@ -112,16 +117,31 @@ bool Donor::comparedonor(Donor &other){
     return retVal;
 }
 
-
+bool Donor::validate_password(){
+    bool retVal = false;
+    if(password.length() >= 6){
+        if(password.find_first_of(NUM) != string::npos){
+            if(password.find_first_of(SPECIAL) != string::npos){
+                retVal = true;
+            } else {
+                cout << "Password has to contain one special character." << endl;
+            }
+        } else {
+            cout << "Password has to contain at least one digit." << endl;
+        }
+    } else {
+        cout << "Password has to contain at least 6 characters." << endl;
+    }
+    return retVal;
+}
 
 void Donor::manage(){
-    /*change some or all of the donor information (other than the userid and password)
-associated with the record for the donor who is logged in. Please allow the user to select which fields to
+    /*change some or all of the donor information (other than the userid and password) associated with the record for the donor who is logged in. Please allow the user to select which fields to
 update, keeping all other information the same.*/
     string command;
     while(true){
         cout << "What field would you like to change?" << endl;
-        cout << "\tYou can choose from: ['Last' -- to change last name, 'First' -- to change first name, 'Street' --to change street name, 'Town' -- to change town, 'Zip' -- to change zip code, 'State' -- to change the state, 'Age' -- to change age, or 'House' -- to change house number]\n\t\t:";
+        cout << "\tYou can choose from: ['Last', 'First', 'Street', 'Town', 'Zip', 'State', 'Age', or 'House']\n\t\t: ";
         cin >> command;
         if(command == "Last"){
             cout << "What would you like to change your last name to?: ";
@@ -203,6 +223,8 @@ bool Donor::manage_again(){
         if(cmd == "Yes"){
             retVal = true;
             break;
+        } else if (cmd == "No"){
+            break;
         } else {
             cout << "Unknown command." << endl;
             continue;
@@ -210,6 +232,7 @@ bool Donor::manage_again(){
     }
     return retVal;
 }
+
 void Donor::view(){
 
     cout << "Donor Info\n";
@@ -229,12 +252,16 @@ void Donor::donate(){
             cin  >> temp_donated;
             if(temp_donated < 0){
                 cout << "You cannot donate negative amount of money." << endl;
+                continue;
             } else if((temp_donated + donated) > 5000){
                 cout << "You cannot donate more than $5,000." << endl;
                 cout << "If you would like to donate $5,000, please donate " << (5000.0 - donated) << " when prompted." << endl;
+                continue;
             }
+            break;
     }
-    printf("You have just donated $%.2f. Thank you!\n", donated);
+    printf("You have just donated $%.2f. Thank you!\n", temp_donated);
+    donated += temp_donated;
 }
 
 void Donor::total(){
@@ -244,21 +271,28 @@ void Donor::total(){
 
 void Donor::change_password(){
     string curr, temp, temp02;
-    cout << "Please enter your current password: ";
-    cin >> curr;
-    if(curr == password){
-        cout << "Please enter your new password: ";
-        cin >> temp;
-        cout << "Confirm your new password: ";
-        cin >> temp02;
-        if(temp == temp02){
-            password = temp;
-            cout << "New password has been set." << endl;
+    while(true){
+        cout << "Please enter your current password: ";
+        cin >> curr;
+        if(curr == password){
+            while(true){
+                cout << "Please enter your new password: ";
+                cin >> password;
+                if(validate_password()){
+                    cout << "Confirm your new password: ";
+                    cin >> temp02;
+                    if(password == temp02){
+                        cout << "New password has been set." << endl;
+                        break;
+                    } else {
+                        cout << "Passwords do not match." << endl;
+                        cout << endl;
+                    }
+                }
+            }
+            break;
         } else {
-            cout << "Passwords do not match." << endl;
-            cout << endl;
+            cout << "Wrong password." << endl;
         }
-    } else {
-        cout << "Wrong password." << endl;
     }
 }

@@ -40,6 +40,7 @@ class Donor {
     void setdonated(float d);
     //other functions
     bool comparedonor(Donor &other);
+    bool validate_password();
     void manage();
     bool manage_again();
     void view();
