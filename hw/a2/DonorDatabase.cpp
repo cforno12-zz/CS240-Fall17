@@ -127,8 +127,6 @@ void DonorDatabase::login(){
     }
 }
 
-
-
 bool DonorDatabase::validate_last_name() {
     bool retVal = false;
     if(last_name.find_first_not_of(LETTERS) == string::npos){
