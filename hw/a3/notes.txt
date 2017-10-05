@@ -1,0 +1,40 @@
+three classes:
+      User
+        varibales:
+          last
+          first
+
+      UserLL
+        variables:
+          Node head;
+        Functions:
+          insert();
+          remove();
+          find();
+      UserNode
+        2 constructors
+          default constructor
+          contructor that takes in a user
+
+
+
+//INSERT FUNC runtime 0(1)
+bool LL::insert(int newVal{
+     Node* newNode = new Node(newVal);
+     if(newNode == nullptr){
+                return false;
+     }
+     newNode->next = first;
+     first = newNode;
+     return true;
+}
+
+//DELETE FUNC remove first node
+bool LL::remove(){
+     //check if head is empty
+     if(HEAD) return false;
+     Node* temp = HEAD;
+     HEAD = HEAD->next;
+     delete temp;
+     return true
+}
