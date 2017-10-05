@@ -6,8 +6,8 @@
 #include <string.h>
 //user headers
 #include "FBLUser.h"
-//#include "FBLUserNode.h"
-class FBLUserNode;
+#include "FBLUserNode.h"
+//class FBLUserNode;
 
 using namespace std;
 
@@ -20,7 +20,7 @@ class FBLUserLL {
     //GETTERS
     FBLUserNode* get_head();
     //SETTERS
-    void set_head(FBLUserNode* head);
+    void set_head(FBLUserNode* h);
     //OTHER FUNCTIONS
     void login();
     void add();

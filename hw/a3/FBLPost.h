@@ -20,4 +20,5 @@ class FBLPost{
     void set_post(string p);
     //OTHER FUNCTIONS
     void check_valid_post();
-}
+};
+#endif
