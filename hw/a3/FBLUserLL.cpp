@@ -18,10 +18,10 @@ void FBLUserLL::set_head(FBLUserNode* h){
     head = h;
 }
 
-void login(){
+void FBLUserLL::login(){
     //traverse through linked list and find userid == temp_user
 }
 
-void add(string ui, string pw, string fn, string ln){
-    
+void FBLUserLL::add(string ui, string pw, string fn, string ln){
+
 }

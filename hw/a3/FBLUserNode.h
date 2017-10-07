@@ -1,5 +1,4 @@
-#ifdef UNODE_H
-#define UNODE_H
+
 //libraries
 #include <iostream>
 #include <stdlib.h>
@@ -23,9 +22,4 @@ class FBLUserNode {
     //SETTERS
     void set_data(FBLUser fbu);
     void set_next(FBLUserNode* fbn);
-    //CONSTRUCTORS
-    FBLUserNode();
-    FBLUserNode(FBLUser fbu);
 };
-
-#endif

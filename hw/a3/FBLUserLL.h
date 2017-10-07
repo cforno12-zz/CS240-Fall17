@@ -22,7 +22,7 @@ class FBLUserLL {
     void set_head(FBLUserNode* h);
     //OTHER FUNCTIONS
     void login();
-    void add();
+    void add(string ui, string pw, string fn, string ln);
     void remove();
     void find();
     void clear();
