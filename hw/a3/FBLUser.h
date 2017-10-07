@@ -4,9 +4,6 @@
 #include <iostream>
 #include <stdlib.h>
 #include <string.h>
-//user headers
-#include "FBLUserNode.h"
-#include "FBLUserLL.h"
 
 using namespace std;
 
@@ -27,8 +24,8 @@ class FBLUser {
     void set_password(string pw);
     void set_user_id(string ui);
     // OTHER FUNCTIONS
-    void post(); //creates a FB posting
-    void read(); //displays the first FBLPost inside the current user
+    //void post(); //creates a FB posting
+    //void read(); //displays the first FBLPost inside the current user
 };
 
 #endif

@@ -38,11 +38,3 @@ void FBLUser::set_password(string pw){
 void FBLUser::set_user_id(string ui){
     user_id = ui;
 }
-//other functions
-void FBLUser::post(){
-    //create new FBLPost object and store it in FBLPostLL
-}
-
-void FBLUser::read(){
-    //print to console the oldest post
-}

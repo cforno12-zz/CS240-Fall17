@@ -3,8 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 //user headers
-#include "FBLUser.h"
-#inlcude "FBLUserNode.h"
+#include "FBLUserLL.h"
 
 using namespace std;
 
@@ -19,4 +18,10 @@ void FBLUserLL::set_head(FBLUserNode* h){
     head = h;
 }
 
+void login(){
+    //traverse through linked list and find userid == temp_user
+}
 
+void add(string ui, string pw, string fn, string ln){
+    
+}

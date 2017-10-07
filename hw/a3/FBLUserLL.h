@@ -5,15 +5,14 @@
 #include <stdlib.h>
 #include <string.h>
 //user headers
-#include "FBLUser.h"
 #include "FBLUserNode.h"
-//class FBLUserNode;
 
 using namespace std;
 
 class FBLUserLL {
  private:
     FBLUserNode* head;
+    string temp_user, temp_pass, temp_first, temp_last;
  public:
     //CONSTRUCTORS
     FBLUserLL();
