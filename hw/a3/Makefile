@@ -10,7 +10,7 @@ CXXFLAGS:= -c -Wall -I=.
 all: link
 
 link: compile $(SOURCE) $(OBJECT)
-	g++ -o FBL_Forno.exe $(SOURCE)
+	g++ -o FBL_Forno.exe $(OBJECT)
 
 compile: $(SOURCE)
 	$(CXX) $(CXXFLAGS) FBLUser.cpp
@@ -26,4 +26,3 @@ clean:
 compress: clean
 	tar -cvvf Forno_Cristobal_cforno1_CA2.tar *.*
 	gzip Forno_Cristobal_cforno1_CA2.tar
-
