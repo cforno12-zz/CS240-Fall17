@@ -24,6 +24,7 @@ class FBLUser {
     void set_password(string pw);
     void set_user_id(string ui);
     // OTHER FUNCTIONS
+    void print_user();
     //void post(); //creates a FB posting
     //void read(); //displays the first FBLPost inside the current user
 };
