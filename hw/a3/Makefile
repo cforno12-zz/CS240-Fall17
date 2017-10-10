@@ -1,7 +1,7 @@
 #----------------------------------------------------
 
-SOURCE=FBLUser.h FBLUser.cpp FBLUserNode.h FBLUserNode.cpp FBLUserLL.h FBLUserLL.cpp FBLPost.h FBLPost.cpp FBLPostNode.h FBLPostNode.cpp FBLPostLL.h FBLPostLL.cpp
-OBJECT=FBLUser.o FBLUserNode.o FBLUserLL.o FBLPost.o FBLPostNode.o FBLPostLL.o
+SOURCE=FBLUser.h FBLUser.cpp FBLUserNode.h FBLUserNode.cpp FBLUserLL.h FBLUserLL.cpp FBLPost.h FBLPost.cpp FBLPostNode.h FBLPostNode.cpp FBLPostLL.h FBLPostLL.cpp CA3.cpp
+OBJECT=FBLUser.o FBLUserNode.o FBLUserLL.o FBLPost.o FBLPostNode.o FBLPostLL.o CA3.cpp
 CXX:= g++
 CXXFLAGS:= -c -Wall -I=.
 
@@ -19,6 +19,7 @@ compile: $(SOURCE)
 	$(CXX) $(CXXFLAGS) FBLPost.cpp
 	$(CXX) $(CXXFLAGS) FBLPostNode.cpp
 	$(CXX) $(CXXFLAGS) FBLPostLL.cpp
+	$(CXX) $(CXXFLAGS) CA3.cpp
 
 clean:
 	rm -f *.o FBL_Forno.exe
