@@ -12,7 +12,6 @@ using namespace std;
 class FBLUserLL {
  private:
     FBLUserNode* head;
-    string temp_userid, temp_pass, temp_first, temp_last;
  public:
     //CONSTRUCTORS
     FBLUserLL();
@@ -24,7 +23,6 @@ class FBLUserLL {
     void login(string ui);
     void add(string ui, string pw, string fn, string ln);
     void remove(string ui);
-    void clear();
     void print_list();
     bool check_userid(string ui);
 };

@@ -11,29 +11,26 @@ using namespace std;
 int main(){
     FBLUserLL* linked_list = new FBLUserLL();
     cout << "Welcome to Facebook Lite!" << endl;
-    string cmd = "";
+    string cmd, temp_userid, temp_password, temp_first_name, temp_last_name;
     bool quit = false;
     while (!quit){
-        cout << "Please enter a command: [\"CREATE\", \"LOGIN\", or \"LOGOUT\"]" << endl;
-        getline(cin, cmd);
-        string buff = "";
-        stringstream stream(cmd);
-        vector<string> user_line;
-        user_line.clear();
-        while(stream >> buff) {
-            user_line.push_back(buff);
-            if(user_line[0] == "CREATE"){
-                linked_list->add(user_line[1], user_line[2], user_line[3], user_line[4]);
-                continue;
-            } else if (user_line[0] == "LOGIN"){
-                linked_list->login(user_line[1]);
-            } else if (user_line[0] == "PRINT"){
-                linked_list->print_list();
-            } else if (user_line[0] == "LOGOUT"){
-                quit = true;
-            } else {
-                cout << "Command not recognized." << endl;
-            }
+        cout << "Please enter a command: [\"CREATE\", \"LOGIN\", or \"QUIT\"]" << endl;
+        cin >> cmd;
+        if(cmd == "CREATE"){
+            cin >> temp_userid;
+            cin >> temp_password;
+            cin >> temp_first_name;
+            cin >> temp_last_name;
+            linked_list->add(temp_userid, temp_password, temp_first_name, temp_last_name);
+        } else if (cmd == "LOGIN"){
+            cin >> temp_userid;
+            linked_list->login(temp_userid);
+        } else if (cmd == "PRINT"){
+            linked_list->print_list();
+        } else if (cmd == "QUIT"){
+            quit = true;
+        } else {
+            cout << "Command not found." << endl;
         }
     }
 }

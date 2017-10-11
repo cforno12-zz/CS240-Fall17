@@ -28,23 +28,31 @@ void FBLUserLL::login(string ui){
                 //user found
                 user_found = true;
                 string cmd = "";
-                cout << "Welcome " << ui << "! "<< endl; 
+                bool quit = false;
+                string post = "";
+
+                cout << "Welcome " << ui << " !"<< endl; 
                 do {
                     cout << "Please select a command: ['POST' or 'LOGOUT']:" << endl;
                     cin >> cmd;
                     if(cmd == "POST"){
-                        //post some shit boi
+                        cin.ignore(1000, '\n');
+                        getline(cin, post);
+
+                    } else if(cmd == "LOGOUT"){
+                        quit = true;
                     }
-                } while (cmd != "LOGOUT");
+                } while (!quit);
                 break;
             } else {
                 curr = curr->get_next();
             }
         }
+        if(user_found == false){
+            cout << "User ID does not exist." << endl;
+        }
     } else {
         cout << "List is empty" << endl;
-    }    if(user_found == false){
-        cout << "User ID does not exist." << endl;
     }
 }
 //if username is already being used, it returns true
