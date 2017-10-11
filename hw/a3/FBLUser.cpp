@@ -41,7 +41,7 @@ void FBLUser::set_user_id(string ui){
 //OTHER FUNCTIONS
 void FBLUser::print_user(){
     cout << "User: " << user_id << endl;
+    cout << "Password: " << password << endl;
     cout << "First Name: " << first_name << endl;
     cout << "Last Name: " << last_name << endl;
-    cout << "Password: " << password << endl;
 }

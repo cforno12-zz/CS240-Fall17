@@ -43,13 +43,30 @@ void FBLUserLL::login(string ui){
         }
     } else {
         cout << "List is empty" << endl;
-    }
-    if(user_found == false){
+    }    if(user_found == false){
         cout << "User ID does not exist." << endl;
     }
 }
+//if username is already being used, it returns true
+bool FBLUserLL::check_userid(string ui){
+    bool retVal = false;
+    FBLUserNode* curr = head;
+    while (curr != nullptr){
+        if(curr->get_data()->get_user_id() == ui){
+            retVal = true;
+            break;
+        }
+        curr = curr->get_next();
+    }
+    return retVal;
+}
 
 void FBLUserLL::add(string ui, string pw, string fn, string ln){
+    bool check = this->check_userid(ui);
+    if(check == true){
+        cout << "User ID already taken." << endl;
+        return;
+    }
     //making a new user obj
     FBLUser* temp_user = new FBLUser();
     temp_user->set_user_id(ui);
@@ -78,12 +95,14 @@ void FBLUserLL::remove(string ui){
                     if(previous != nullptr){
                         previous->set_next(curr->get_next());
                         delete curr;
+                        curr = nullptr;
                         deleteFlag = true;
                         break;
                     } else {
                         //if this is the head of the list
                         head = curr->get_next();
                         delete curr;
+                        curr = nullptr;
                         deleteFlag = true;
                         break;
                     }
@@ -91,6 +110,7 @@ void FBLUserLL::remove(string ui){
                     //if this is the end of the list
                     previous->set_next(nullptr);
                     delete curr;
+                    curr = nullptr;
                     deleteFlag = true;
                     break;
                 }
@@ -98,9 +118,12 @@ void FBLUserLL::remove(string ui){
             previous = curr;
             curr = curr->get_next();
         }
-    }else if(head != nullptr){
+    } else if(head != nullptr && head->get_data() == nullptr){
+        //if it is the last node
         if(head->get_data()->get_user_id() == ui){
+            //TODO: fix remove when last node in the list (not part of phase 1)
             delete head;
+            head = nullptr;
             deleteFlag = true;
         } else {
             cout << "User ID does not exist." << endl;
@@ -108,6 +131,7 @@ void FBLUserLL::remove(string ui){
     } else {
         cout << "List is empty." << endl;
     }
+
     if(deleteFlag == false){
         cout << "User ID was not found." << endl;
     }
@@ -115,16 +139,26 @@ void FBLUserLL::remove(string ui){
 
 void FBLUserLL::print_list(){
     if(head != nullptr){
-        FBLUserNode* curr = head;
-        int counter = 0;
-        while(curr != nullptr){
+        if(!head->get_next()){
+            FBLUserNode* curr = head;
             cout << "-----------------------------------------------" << endl;
-            cout << "User #" << counter << endl;
-            counter++;
+            cout << "User #0" << endl;
             curr->get_data()->print_user();
-            curr = curr->get_next();
+        } else {
+            FBLUserNode* curr = head;
+            int counter = 0;
+            while(curr) {
+                cout << "-----------------------------------------------" << endl;
+                cout << "User #" << counter << endl;
+                counter++;
+                // cout << "executing?" << endl;
+                curr->get_data()->print_user();
+                // cout << "executing!"<< endl;
+                curr = curr->get_next();
+            }
         }
-    } else {
+    }
+    else {
         cout << "List is empty." << endl;
     }
 }

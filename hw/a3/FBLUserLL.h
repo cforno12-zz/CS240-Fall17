@@ -26,6 +26,7 @@ class FBLUserLL {
     void remove(string ui);
     void clear();
     void print_list();
+    bool check_userid(string ui);
 };
 
 #endif
