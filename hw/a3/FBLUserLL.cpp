@@ -19,13 +19,13 @@ void FBLUserLL::set_head(FBLUserNode* h){
     head = h;
 }
 
-void FBLUserLL::login(string ui){
+void FBLUserLL::login(string ui, string pass){
     //traverse through linked list and find userid == temp_user
     bool user_found = false;
     if(head != nullptr){
         FBLUserNode* curr = head;
         while(curr != nullptr){
-            if(curr->get_data()->get_user_id() == ui){
+            if(curr->get_data()->get_user_id() == ui && curr->get_data()->get_password() == pass){
                 //user found
                 user_found = true;
                 string cmd = "";
@@ -46,6 +46,8 @@ void FBLUserLL::login(string ui){
                         user->print_posts();
                     } else if(cmd == "LOGOUT"){
                         quit = true;
+                    } else {
+                        cout << "Input not valid." << endl;
                     }
                 } while (!quit);
                 break;
@@ -54,7 +56,7 @@ void FBLUserLL::login(string ui){
             }
         }
         if(user_found == false){
-            cout << "User ID does not exist." << endl;
+            cout << "User ID does not exist or incorrect password." << endl;
         }
     } else {
         cout << "List is empty" << endl;

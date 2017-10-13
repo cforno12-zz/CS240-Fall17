@@ -24,7 +24,8 @@ int main(){
             linked_list->add(temp_userid, temp_password, temp_first_name, temp_last_name);
         } else if (cmd == "LOGIN"){
             cin >> temp_userid;
-            linked_list->login(temp_userid);
+            cin >> temp_password;
+            linked_list->login(temp_userid, temp_password);
         } else if (cmd == "PRINT"){
             linked_list->print_list();
         } else if (cmd == "QUIT"){
