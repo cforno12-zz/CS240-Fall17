@@ -12,7 +12,7 @@ using namespace std;
 class FBLUser {
  private:
     string first_name, last_name, password, user_id;
-    FBLPostLL ll;
+    FBLPostLL* ll;
 
  public:
     //CONSTRUCTORS
@@ -29,8 +29,9 @@ class FBLUser {
     void set_user_id(string ui);
     // OTHER FUNCTIONS
     void print_user();
-    //void post(); //creates a FB posting
-    //void read(); //displays the first FBLPost inside the current user
+    void post(string p); //creates a FB posting
+    void read(); //displays the first FBLPost inside the current user
+    void print_posts();
 };
 
 #endif

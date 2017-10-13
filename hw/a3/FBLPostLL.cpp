@@ -28,21 +28,50 @@ void FBLPostLL::read(){
     if(head && head->get_next()){
         FBLPostNode* curr = head;
         FBLPostNode* previous = nullptr;
-        while (curr){
+        while (curr->get_next()){
             previous = curr;
             curr = curr->get_next();
         }
-        string temp_post = previous->get_data()->get_post();
-        cout << "Most recent post: "<< temp_post << endl;
+        string temp_post = curr->get_data()->get_post();
+        cout << "Most recent post:"<< temp_post << endl;
         //remove post
-        delete previous;
-        previous = nullptr;
-    } if (head){
+        previous->set_next(nullptr);
+        delete curr;
+        curr = nullptr;
+    } else if (head){
         string temp_post = head->get_data()->get_post();
-        cout << "Most recent post: " << temp_post << endl;
+        cout << "Most recent post:" << temp_post << endl;
         delete head;
         head = nullptr;
     } else {
+        cout << "Nothing to READ." << endl;
+    }
+}
+
+void FBLPostLL::print_list(){
+    if(head != nullptr){
+        if(!head->get_next()){
+            FBLPostNode* curr = head;
+            cout << "-----------------------------------------------" << endl;
+            cout << "Post #0" << endl;
+            string temp = curr->get_data()->get_post();
+            cout << temp << endl;
+        } else {
+            FBLPostNode* curr = head;
+            int counter = 0;
+            while(curr) {
+                cout << "-----------------------------------------------" << endl;
+                cout << "Post #" << counter << endl;
+                counter++;
+                // cout << "executing?" << endl;
+                cout << curr->get_data()->get_post() << endl;
+                // cout << "executing!"<< endl;
+                curr = curr->get_next();
+            }
+        }
+    }
+    else {
         cout << "List is empty." << endl;
     }
+
 }

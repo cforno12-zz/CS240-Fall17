@@ -11,7 +11,7 @@ FBLUser::FBLUser(){
     first_name = "";
     password = "";
     user_id = "";
-    
+    ll = new FBLPostLL();
 }
 
 //GETTERS
@@ -46,4 +46,18 @@ void FBLUser::print_user(){
     cout << "Password: " << password << endl;
     cout << "First Name: " << first_name << endl;
     cout << "Last Name: " << last_name << endl;
+}
+
+void FBLUser::post(string p){
+    FBLPost* post_obj = new FBLPost(p);
+    FBLPostNode* post_node = new FBLPostNode(post_obj);
+    ll->add(post_node);
+}
+
+void FBLUser::read(){
+    ll->read();
+}
+
+void FBLUser::print_posts(){
+    ll->print_list();
 }

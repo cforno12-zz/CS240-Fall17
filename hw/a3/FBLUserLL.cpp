@@ -31,16 +31,19 @@ void FBLUserLL::login(string ui){
                 string cmd = "";
                 bool quit = false;
                 string post = "";
-
-                cout << "Welcome " << ui << " !"<< endl;
+                FBLUser* user = curr->get_data();
+                cout << "Welcome " << ui << "!"<< endl;
                 do {
-                    cout << "Please select a command: ['POST' or 'LOGOUT']:" << endl;
+                    cout << "Please select a command: [\"POST\", \"READ\", or \"LOGOUT\"]:" << endl;
                     cin >> cmd;
                     if(cmd == "POST"){
-
                         //cin.ignore(1000, '\n');
                         getline(cin, post);
-                        FBLPost
+                        user->post(post);
+                    } else if(cmd == "READ"){
+                        user->read();
+                    }else if(cmd == "print"){
+                        user->print_posts();
                     } else if(cmd == "LOGOUT"){
                         quit = true;
                     }

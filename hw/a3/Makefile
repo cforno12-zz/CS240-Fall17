@@ -25,5 +25,5 @@ clean:
 	rm -f *.o FBL_Forno.exe
 
 compress: clean
-	tar -cvvf Forno_Cristobal_cforno1_CA2.tar *.*
-	gzip Forno_Cristobal_cforno1_CA2.tar
+	tar -cvvf Forno_Cristobal_cforno1_CA3.tar *.*
+	gzip Forno_Cristobal_cforno1_CA3.tar
