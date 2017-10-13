@@ -4,6 +4,7 @@
 #include <string.h>
 //user headers
 #include "FBLUserLL.h"
+#include "FBLPostLL.h"
 
 using namespace std;
 
@@ -31,14 +32,15 @@ void FBLUserLL::login(string ui){
                 bool quit = false;
                 string post = "";
 
-                cout << "Welcome " << ui << " !"<< endl; 
+                cout << "Welcome " << ui << " !"<< endl;
                 do {
                     cout << "Please select a command: ['POST' or 'LOGOUT']:" << endl;
                     cin >> cmd;
                     if(cmd == "POST"){
-                        cin.ignore(1000, '\n');
-                        getline(cin, post);
 
+                        //cin.ignore(1000, '\n');
+                        getline(cin, post);
+                        FBLPost
                     } else if(cmd == "LOGOUT"){
                         quit = true;
                     }

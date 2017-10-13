@@ -5,11 +5,15 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "FBLPostLL.h"
+
 using namespace std;
 
 class FBLUser {
  private:
     string first_name, last_name, password, user_id;
+    FBLPostLL ll;
+
  public:
     //CONSTRUCTORS
     FBLUser();

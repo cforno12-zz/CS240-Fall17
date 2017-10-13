@@ -4,12 +4,14 @@
 #include <string.h>
 //user headers
 #include "FBLUser.h"
+#include "FBLPostLL.h"
 
 FBLUser::FBLUser(){
     last_name = "";
     first_name = "";
     password = "";
     user_id = "";
+    
 }
 
 //GETTERS

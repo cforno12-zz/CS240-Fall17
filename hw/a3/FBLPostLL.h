@@ -20,7 +20,6 @@ class FBLPostLL {
     //OTHER FUNCTIONS
     void add(FBLPostNode* post_node);
     void read();
-    void remove();
 };
 
 #endif

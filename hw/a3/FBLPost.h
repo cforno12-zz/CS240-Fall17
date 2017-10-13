@@ -11,6 +11,8 @@ class FBLPost{
  private:
     string post;
  public:
+    //CONSTRUCTOR
+    FBLPost(string p);
     //GETTERS
     string get_post();
     //SETTERS
