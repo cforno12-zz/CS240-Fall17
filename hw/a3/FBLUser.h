@@ -13,7 +13,8 @@ using namespace std;
 class FBLUser {
  private:
     string first_name, last_name, password, user_id;
-    FBLPostLL* ll;
+    FBLPostLL* feed;
+    FBLPostLL* wall;
     vector<FBLUser*> friends;
 
  public:
@@ -24,6 +25,8 @@ class FBLUser {
     string get_last_name();
     string get_password();
     string get_user_id();
+    FBLPostLL* get_feed();
+    FBLPostLL* get_wall();
     // SETTERS
     void set_first_name(string fn);
     void set_last_name(string ln);
@@ -33,10 +36,12 @@ class FBLUser {
     void print_user();
     void post(string p); //creates a FB posting
     void read(); //displays the first FBLPost inside the current user
-    void print_posts();
+    //  Phase 2 functions
     void make_friend(FBLUser* user);
     void print_friends();
-	void feed();
+    void print_feed();
+    void print_wall();
+
 };
 
 #endif

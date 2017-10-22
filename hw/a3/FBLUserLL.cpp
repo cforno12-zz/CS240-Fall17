@@ -35,21 +35,19 @@ void FBLUserLL::login(string ui, string pass){
                 FBLUser* user = curr->get_data();
                 cout << "Welcome " << ui << "!"<< endl;
                 do {
-                    cout << "Please select a command: [\"POST\", \"READ\", or \"LOGOUT\"]:" << endl;
+                    cout << "Please select a command: [\"POST\", \"READ\", \"FRIEND\", \"MYFRIENDS\", \"MYFEED\", \"MYWALL\", or \"LOGOUT\"]:" << endl;
                     cin >> cmd;
                     if(cmd == "POST"){
                         getline(cin, post);
                         user->post(post);
                     } else if(cmd == "READ"){
                         user->read();
-                    }else if(cmd == "print"){
-                        user->print_posts();
                     } else if(cmd == "LOGOUT"){
                         quit = true;
                     } else if(cmd == "FRIEND"){
                         cin >> fuser;
                         //check if fuser is in the linked list..
-                        if(this->check_userid(fuser)){
+                        if(this->check_userid(fuser) && fuser != user->get_user_id()){
                             FBLUser* curr_friend = nullptr;
                             FBLUserNode* finding_friend = head;
                             while(finding_friend != nullptr) {
@@ -71,11 +69,12 @@ void FBLUserLL::login(string ui, string pass){
                         user->print_friends();
                     } else if(cmd == "MYFEED"){
                         //print friends posts.
-                        user->feed();
+                        cout << "This is your feed:" << endl;
+                        user->print_feed();
                     } else if(cmd == "MYWALL"){
                         //print your posts.
                         cout << "This is your wall:" << endl;
-                        user->print_posts();
+                        user->print_wall();
                     } else {
                         cout << "Input not valid." << endl;
                     }

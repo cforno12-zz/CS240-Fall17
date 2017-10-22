@@ -24,6 +24,7 @@ void FBLPostLL::add(FBLPostNode* post_node){
         head = post_node;
     }
 }
+//pops oldest post
 void FBLPostLL::read(){
     if(head && head->get_next()){
         FBLPostNode* curr = head;
@@ -48,7 +49,7 @@ void FBLPostLL::read(){
     }
 }
 
-void FBLPostLL::print_wall(){
+void FBLPostLL::print_posts(){
     if(head != nullptr){
         if(!head->get_next()){
             FBLPostNode* curr = head;

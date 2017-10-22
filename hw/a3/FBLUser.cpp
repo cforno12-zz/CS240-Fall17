@@ -12,7 +12,8 @@ FBLUser::FBLUser(){
     first_name = "";
     password = "";
     user_id = "";
-    ll = new FBLPostLL();
+    //feed = new FBLPostLL();
+	wall = new FBLPostLL();
     friends.clear();
 }
 
@@ -28,6 +29,14 @@ string FBLUser::get_password(){
 }
 string FBLUser::get_user_id(){
     return user_id;
+}
+
+FBLPostLL* FBLUser::get_feed(){
+    return feed;
+}
+
+FBLPostLL* FBLUser::get_wall(){
+    return wall;
 }
 //SETTERS
 void FBLUser::set_first_name(string fn){
@@ -53,22 +62,25 @@ void FBLUser::print_user(){
 void FBLUser::post(string p){
     FBLPost* post_obj = new FBLPost(p);
     FBLPostNode* post_node = new FBLPostNode(post_obj);
-    ll->add(post_node);
+    wall->add(post_node);
+    for (int i = 0; i < friends.size(); i++) {
+        friends[i]->get_feed()->add(post_node);
+    }
 }
 
 void FBLUser::read(){
-    ll->read();
+    wall->read();
 }
 
-void FBLUser::print_posts(){
-    ll->print_wall();
-}
-
-void FBLUser::feed(){
+void FBLUser::print_feed(){
     for(int i = 0; i < friends.size(); i++){
         cout << "This is " << friends[i]->get_first_name() << " " << friends[i]->get_last_name() << "'s posts:" << endl;
-        friends[i]->print_posts();
+        friends[i]->get_wall()->print_posts();
     }
+}
+
+void FBLUser::print_wall(){
+    wall->print_posts();
 }
 
 void FBLUser::make_friend(FBLUser* user){

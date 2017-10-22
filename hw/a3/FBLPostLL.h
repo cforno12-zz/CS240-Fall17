@@ -20,7 +20,7 @@ class FBLPostLL {
     //OTHER FUNCTIONS
     void add(FBLPostNode* post_node);
     void read();
-    void print_wall();
+    void print_posts();
 };
 
 #endif
