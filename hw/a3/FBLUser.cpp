@@ -61,7 +61,14 @@ void FBLUser::read(){
 }
 
 void FBLUser::print_posts(){
-    ll->print_list();
+    ll->print_wall();
+}
+
+void FBLUser::feed(){
+    for(int i = 0; i < friends.size(); i++){
+        cout << "This is " << friends[i]->get_first_name() << " " << friends[i]->get_last_name() << "'s posts:" << endl;
+        friends[i]->print_posts();
+    }
 }
 
 void FBLUser::make_friend(FBLUser* user){
@@ -69,7 +76,7 @@ void FBLUser::make_friend(FBLUser* user){
 }
 
 void FBLUser::print_friends(){
-    for (unsigned long i = 0; i < friends.size(); i++){
+    for (int i = 0; i < friends.size(); i++){
         cout << friends[i]->get_first_name() << " " << friends[i]->get_last_name() << endl;
     }
 }

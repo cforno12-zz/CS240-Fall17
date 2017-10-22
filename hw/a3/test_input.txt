@@ -10,3 +10,18 @@ POST this is a post03
 FRIEND obama
 FRIEND ebaule
 MYFRIENDS
+LOGOUT
+LOGIN ebaule password
+POST i am evan01
+POST i am evan02
+LOGOUT
+LOGIN mlewis password
+POST i am mike01
+POST i am mike02
+LOGOUT
+LOGIN cforno password
+FRIEND mlewis
+MYFEED
+MYWALL
+LOGOUT
+QUIT

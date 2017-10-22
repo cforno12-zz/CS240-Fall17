@@ -48,30 +48,26 @@ void FBLPostLL::read(){
     }
 }
 
-void FBLPostLL::print_list(){
+void FBLPostLL::print_wall(){
     if(head != nullptr){
         if(!head->get_next()){
             FBLPostNode* curr = head;
-            cout << "-----------------------------------------------" << endl;
-            cout << "Post #0" << endl;
+            cout << "->";
             string temp = curr->get_data()->get_post();
             cout << temp << endl;
         } else {
             FBLPostNode* curr = head;
             int counter = 0;
-            while(curr) {
-                cout << "-----------------------------------------------" << endl;
-                cout << "Post #" << counter << endl;
+            while(curr != nullptr) {
                 counter++;
-                // cout << "executing?" << endl;
+                cout << "->";
                 cout << curr->get_data()->get_post() << endl;
-                // cout << "executing!"<< endl;
                 curr = curr->get_next();
             }
         }
     }
     else {
-        cout << "List is empty." << endl;
+        cout << "This user has not posted anything." << endl;
     }
 
 }

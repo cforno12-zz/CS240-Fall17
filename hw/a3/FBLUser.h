@@ -36,6 +36,7 @@ class FBLUser {
     void print_posts();
     void make_friend(FBLUser* user);
     void print_friends();
+	void feed();
 };
 
 #endif

@@ -38,7 +38,6 @@ void FBLUserLL::login(string ui, string pass){
                     cout << "Please select a command: [\"POST\", \"READ\", or \"LOGOUT\"]:" << endl;
                     cin >> cmd;
                     if(cmd == "POST"){
-                        //cin.ignore(1000, '\n');
                         getline(cin, post);
                         user->post(post);
                     } else if(cmd == "READ"){
@@ -70,6 +69,13 @@ void FBLUserLL::login(string ui, string pass){
                     } else if(cmd == "MYFRIENDS"){
                         //display all the friends in the current linked list
                         user->print_friends();
+                    } else if(cmd == "MYFEED"){
+                        //print friends posts.
+                        user->feed();
+                    } else if(cmd == "MYWALL"){
+                        //print your posts.
+                        cout << "This is your wall:" << endl;
+                        user->print_posts();
                     } else {
                         cout << "Input not valid." << endl;
                     }
