@@ -31,6 +31,7 @@ void FBLUserLL::login(string ui, string pass){
                 string cmd = "";
                 bool quit = false;
                 string post = "";
+                string fuser = "";
                 FBLUser* user = curr->get_data();
                 cout << "Welcome " << ui << "!"<< endl;
                 do {
@@ -46,6 +47,29 @@ void FBLUserLL::login(string ui, string pass){
                         user->print_posts();
                     } else if(cmd == "LOGOUT"){
                         quit = true;
+                    } else if(cmd == "FRIEND"){
+                        cin >> fuser;
+                        //check if fuser is in the linked list..
+                        if(this->check_userid(fuser)){
+                            FBLUser* curr_friend = nullptr;
+                            FBLUserNode* finding_friend = head;
+                            while(finding_friend != nullptr) {
+                                if(finding_friend->get_data()->get_user_id() == fuser){
+                                    //found friend.
+                                    curr_friend = finding_friend->get_data();
+                                    break;
+                                }
+                                finding_friend = finding_friend->get_next();
+                            }
+                            //this stores the name of the friend into the vector
+                            //the vector lies inside the user class
+                            user->make_friend(curr_friend);
+                        } else {
+                            cout << "User does not exist." << endl;
+                        }
+                    } else if(cmd == "MYFRIENDS"){
+                        //display all the friends in the current linked list
+                        user->print_friends();
                     } else {
                         cout << "Input not valid." << endl;
                     }
@@ -137,6 +161,7 @@ void FBLUserLL::remove(string ui){
         //if it is the last node
         if(head->get_data()->get_user_id() == ui){
             //TODO: fix remove when last node in the list (not part of phase 1)
+            // i think i fixed this... DONE
             delete head;
             head = nullptr;
             deleteFlag = true;
@@ -166,9 +191,7 @@ void FBLUserLL::print_list(){
                 cout << "-----------------------------------------------" << endl;
                 cout << "User #" << counter << endl;
                 counter++;
-                // cout << "executing?" << endl;
                 curr->get_data()->print_user();
-                // cout << "executing!"<< endl;
                 curr = curr->get_next();
             }
         }

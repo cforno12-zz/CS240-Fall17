@@ -1,0 +1,12 @@
+CREATE cforno password Cris Forno
+CREATE obama password Barack Obama
+CREATE trump password Donald Trump
+CREATE mlewis password Mike Lewis
+CREATE ebaule password Evan Baule
+LOGIN cforno password
+POST this is a post01
+POST this is a post02
+POST this is a post03
+FRIEND obama
+FRIEND ebaule
+MYFRIENDS

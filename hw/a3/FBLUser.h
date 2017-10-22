@@ -4,6 +4,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <string.h>
+#include <vector>
 
 #include "FBLPostLL.h"
 
@@ -13,6 +14,7 @@ class FBLUser {
  private:
     string first_name, last_name, password, user_id;
     FBLPostLL* ll;
+    vector<FBLUser*> friends;
 
  public:
     //CONSTRUCTORS
@@ -32,6 +34,8 @@ class FBLUser {
     void post(string p); //creates a FB posting
     void read(); //displays the first FBLPost inside the current user
     void print_posts();
+    void make_friend(FBLUser* user);
+    void print_friends();
 };
 
 #endif

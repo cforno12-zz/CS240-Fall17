@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <string.h>
+#include <vector>
 //user headers
 #include "FBLUser.h"
 #include "FBLPostLL.h"
@@ -12,6 +13,7 @@ FBLUser::FBLUser(){
     password = "";
     user_id = "";
     ll = new FBLPostLL();
+    friends.clear();
 }
 
 //GETTERS
@@ -60,4 +62,14 @@ void FBLUser::read(){
 
 void FBLUser::print_posts(){
     ll->print_list();
+}
+
+void FBLUser::make_friend(FBLUser* user){
+    friends.push_back(user);
+}
+
+void FBLUser::print_friends(){
+    for (unsigned long i = 0; i < friends.size(); i++){
+        cout << friends[i]->get_first_name() << " " << friends[i]->get_last_name() << endl;
+    }
 }
