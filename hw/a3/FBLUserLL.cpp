@@ -48,19 +48,20 @@ void FBLUserLL::login(string ui, string pass){
                         cin >> fuser;
                         //check if fuser is in the linked list..
                         if(this->check_userid(fuser) && fuser != user->get_user_id()){
-                            FBLUser* curr_friend = nullptr;
-                            FBLUserNode* finding_friend = head;
-                            while(finding_friend != nullptr) {
-                                if(finding_friend->get_data()->get_user_id() == fuser){
+                            FBLUser* add_me = nullptr;
+                            FBLUserNode* curr_friend = head;
+                            while(curr_friend != nullptr) {
+                                if(curr_friend->get_data()->get_user_id() == fuser){
                                     //found friend.
-                                    curr_friend = finding_friend->get_data();
+                                    add_me = curr_friend->get_data();
                                     break;
                                 }
-                                finding_friend = finding_friend->get_next();
+                                curr_friend = curr_friend->get_next();
                             }
-                            //this stores the name of the friend into the vector
+                            //this stores the pointer of the friend into the vector
                             //the vector lies inside the user class
-                            user->make_friend(curr_friend);
+                            user->make_friend(add_me);
+                            add_me->make_friend(user);
                         } else {
                             cout << "User does not exist." << endl;
                         }

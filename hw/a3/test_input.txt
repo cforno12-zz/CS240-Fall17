@@ -12,6 +12,7 @@ FRIEND ebaule
 MYFRIENDS
 LOGOUT
 LOGIN ebaule password
+MYFRIENDS
 POST i am evan01
 POST i am evan02
 LOGOUT

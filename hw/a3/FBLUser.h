@@ -37,7 +37,7 @@ class FBLUser {
     void post(string p); //creates a FB posting
     void read(); //displays the first FBLPost inside the current user
     //  Phase 2 functions
-    void make_friend(FBLUser* user);
+    void make_friend(FBLUser* u);
     void print_friends();
     void print_feed();
     void print_wall();

@@ -83,8 +83,8 @@ void FBLUser::print_wall(){
     wall->print_posts();
 }
 
-void FBLUser::make_friend(FBLUser* user){
-    friends.push_back(user);
+void FBLUser::make_friend(FBLUser* u){
+    friends.push_back(u);
 }
 
 void FBLUser::print_friends(){
