@@ -34,41 +34,31 @@ void FBLPostLL::read(){
             curr = curr->get_next();
         }
         string temp_post = curr->get_data()->get_post();
-        cout << "Most recent post:"<< temp_post << endl;
+        cout << "\t\tMost recent post:"<< temp_post << endl;
         //remove post
         previous->set_next(nullptr);
         delete curr;
         curr = nullptr;
     } else if (head){
         string temp_post = head->get_data()->get_post();
-        cout << "Most recent post:" << temp_post << endl;
+        cout << "\t\tMost recent post:" << temp_post << endl;
         delete head;
         head = nullptr;
     } else {
-        cout << "Nothing to READ." << endl;
+        cout << "\t\tNothing to READ." << endl;
     }
 }
 
 void FBLPostLL::print_posts(){
     if(head != nullptr){
-        if(!head->get_next()){
-            FBLPostNode* curr = head;
-            cout << "->";
-            string temp = curr->get_data()->get_post();
-            cout << temp << endl;
-        } else {
-            FBLPostNode* curr = head;
-            int counter = 0;
-            while(curr != nullptr) {
-                counter++;
-                cout << "->";
-                cout << curr->get_data()->get_post() << endl;
-                curr = curr->get_next();
-            }
+        FBLPostNode* curr = head;
+        while(curr != nullptr) {
+            cout << "\t\t\t->";
+            cout << curr->get_data()->get_post() << endl;
+            curr = curr->get_next();
         }
-    }
-    else {
-        cout << "This user has not posted anything." << endl;
+    } else {
+        cout << "\t\t\tNo posts available." << endl;
     }
 
 }

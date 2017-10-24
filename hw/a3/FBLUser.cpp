@@ -69,14 +69,11 @@ void FBLUser::post(string p){
 }
 
 void FBLUser::read(){
-    wall->read();
+    feed->read();
 }
 
 void FBLUser::print_feed(){
-    for(int i = 0; i < friends.size(); i++){
-        cout << "\tThis is " << friends[i]->get_first_name() << " " << friends[i]->get_last_name() << "'s posts:" << endl;
-        friends[i]->get_wall()->print_posts();
-    }
+    feed->print_posts();
 }
 
 void FBLUser::print_wall(){
@@ -84,11 +81,19 @@ void FBLUser::print_wall(){
 }
 
 void FBLUser::make_friend(FBLUser* u){
-    friends.push_back(u);
+	bool add = true;
+	for (unsigned int i = 0; i < friends.size(); i++) {
+		if(friends[i]->get_user_id() == u->get_user_id()){
+			add = false;
+		}
+	}
+	if(add){
+		friends.push_back(u);
+	}
 }
 
 void FBLUser::print_friends(){
     for (unsigned  int i = 0; i < friends.size(); i++){
-        cout << friends[i]->get_first_name() << " " << friends[i]->get_last_name() << endl;
+        cout << "\t\t" <<friends[i]->get_first_name() << " " << friends[i]->get_last_name() << endl;
     }
 }

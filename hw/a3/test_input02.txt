@@ -1,0 +1,38 @@
+CREATE ebaule1 pw Evan Baule
+CREATE cforno12 pw Cris Forno
+CREATE egbaule pw Eric Baule
+CREATE mlewis pw Mike Lewis
+LOGIN ebaule1 pw
+FRIEND cforno12
+FRIEND egbaule
+FRIEND mlewis
+POST hey friends
+POST I hate cris
+POST can why do dishes?
+MYFRIENDS
+LOGOUT
+LOGIN cforno12 pw
+FRIEND mlewis
+FRIEND ebaule1
+MYFRIENDS
+POST cf 1
+POST cf 2
+POST cf 3
+LOGOUT
+LOGIN mlewis pw
+FRIEND egbaule
+FRIEND ebaule1
+MYFRIENDS
+POST ml 1
+POST ml 2
+POST ml 3
+LOGOUT
+LOGIN cforno12 pw
+LOGOUT
+LOGIN ebaule1 pw
+MYWALL
+MYFRIENDS
+POST emb 1
+MYFEED
+LOGOUT
+QUIT

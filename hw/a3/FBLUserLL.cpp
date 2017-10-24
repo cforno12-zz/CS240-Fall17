@@ -33,9 +33,9 @@ void FBLUserLL::login(string ui, string pass){
                 string post = "";
                 string fuser = "";
                 FBLUser* user = curr->get_data();
-                cout << "Welcome " << ui << "!"<< endl;
+                cout << "\tWelcome " << ui << "!"<< endl;
                 do {
-                    cout << "Please select a command: [\"POST\", \"READ\", \"FRIEND\", \"MYFRIENDS\", \"MYFEED\", \"MYWALL\", or \"LOGOUT\"]:" << endl;
+                    cout << "\tPlease select a command: [\"POST\", \"READ\", \"FRIEND\", \"MYFRIENDS\", \"MYFEED\", \"MYWALL\", or \"LOGOUT\"]:" << endl;
                     cin >> cmd;
                     if(cmd == "POST"){
                         getline(cin, post);
@@ -70,14 +70,14 @@ void FBLUserLL::login(string ui, string pass){
                         user->print_friends();
                     } else if(cmd == "MYFEED"){
                         //print friends posts.
-                        cout << "This is your feed:" << endl;
+                        cout << "\t\tThis is your feed:" << endl;
                         user->print_feed();
                     } else if(cmd == "MYWALL"){
                         //print your posts.
-                        cout << "This is your wall:" << endl;
+                        cout << "\t\tThis is your wall:" << endl;
                         user->print_wall();
                     } else {
-                        cout << "Input not valid." << endl;
+                        cout << "\tInput not valid." << endl;
                     }
                 } while (!quit);
                 break;
