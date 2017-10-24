@@ -15,6 +15,7 @@ class FBLUser {
     string first_name, last_name, password, user_id;
     FBLPostLL* feed;
     FBLPostLL* wall;
+	FBLPostLL* posts;
     vector<FBLUser*> friends;
 
  public:
