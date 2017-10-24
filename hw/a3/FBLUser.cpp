@@ -12,7 +12,7 @@ FBLUser::FBLUser(){
     first_name = "";
     password = "";
     user_id = "";
-    //feed = new FBLPostLL();
+    feed = new FBLPostLL();
 	wall = new FBLPostLL();
     friends.clear();
 }
