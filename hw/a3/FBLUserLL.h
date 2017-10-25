@@ -15,6 +15,7 @@ class FBLUserLL {
  public:
     //CONSTRUCTORS
     FBLUserLL();
+    ~FBLUserLL();
     //GETTERS
     FBLUserNode* get_head();
     //SETTERS

@@ -12,6 +12,12 @@ using namespace std;
 FBLUserLL::FBLUserLL(){
     head = nullptr;
 }
+
+FBLUserLL::~FBLUserLL()
+{
+    if(head) delete head;
+}
+
 FBLUserNode* FBLUserLL::get_head(){
     return head;
 }

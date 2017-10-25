@@ -8,6 +8,10 @@ FBLPost::FBLPost(string p){
     post = p;
 }
 
+FBLPost::~FBLPost(){
+
+}
+
 string FBLPost::get_post(){
     return post;
 }

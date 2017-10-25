@@ -13,8 +13,18 @@ FBLUser::FBLUser(){
     password = "";
     user_id = "";
     feed = new FBLPostLL();
-	wall = new FBLPostLL();
+    wall = new FBLPostLL();
     friends.clear();
+}
+
+FBLUser::~FBLUser(){
+    if(wall){
+        delete wall;
+    }
+    if(feed){
+        delete feed;
+    }
+    //friends = vector<FBLUser*>();
 }
 
 //GETTERS
@@ -63,9 +73,10 @@ void FBLUser::post(string p){
     FBLPost* post_obj = new FBLPost(p);
     FBLPostNode* post_node = new FBLPostNode(post_obj);
     wall->add(post_node);
-    for (int i = 0; i < friends.size(); i++) {
+    for (unsigned int i = 0; i < friends.size(); i++) {
         friends[i]->get_feed()->add(post_node);
     }
+    //delete post_obj;
 }
 
 void FBLUser::read(){

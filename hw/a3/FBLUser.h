@@ -21,6 +21,7 @@ class FBLUser {
  public:
     //CONSTRUCTORS
     FBLUser();
+    ~FBLUser();
     // GETTERS
     string get_first_name();
     string get_last_name();

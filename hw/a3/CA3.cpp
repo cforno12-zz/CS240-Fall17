@@ -34,4 +34,6 @@ int main(){
             cout << "Command not found." << endl;
         }
     }
+
+    delete linked_list;
 }

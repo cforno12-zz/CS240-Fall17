@@ -15,6 +15,7 @@ class FBLUserNode {
     //CONSTRUCTORS
     FBLUserNode();
     FBLUserNode(FBLUser* fbu);
+    ~FBLUserNode();
     //GETTERS
     FBLUser* get_data();
     FBLUserNode* get_next();

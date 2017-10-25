@@ -13,6 +13,7 @@ class FBLPostLL {
  public:
     //CONSTRUCTOR
     FBLPostLL();
+    ~FBLPostLL();
     //GETTERS
     FBLPostNode* get_head();
     //SETTERS

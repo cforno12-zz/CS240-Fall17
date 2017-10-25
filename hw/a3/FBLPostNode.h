@@ -12,6 +12,7 @@ class FBLPostNode {
     //CONSTRUCTORS
     FBLPostNode();
     FBLPostNode(FBLPost* fbp);
+    ~FBLPostNode();
     //GETTERS
     FBLPost* get_data();
     FBLPostNode* get_next();

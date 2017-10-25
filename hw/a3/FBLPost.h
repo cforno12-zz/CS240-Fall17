@@ -13,6 +13,7 @@ class FBLPost{
  public:
     //CONSTRUCTOR
     FBLPost(string p);
+    ~FBLPost();
     //GETTERS
     string get_post();
     //SETTERS

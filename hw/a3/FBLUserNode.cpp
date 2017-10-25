@@ -15,6 +15,14 @@ FBLUserNode::FBLUserNode(FBLUser* fbu){
     data = fbu;
     next = nullptr;
 }
+FBLUserNode::~FBLUserNode(){
+    if(next) {
+        delete next;
+    }
+    if(data) {
+        delete data;
+    }
+}
 //GETTERS
 FBLUser* FBLUserNode::get_data(){
     return data;
