@@ -15,6 +15,7 @@ LOGIN ebaule password
 MYFRIENDS
 POST i am evan01
 POST i am evan02
+MYWALL
 LOGOUT
 LOGIN mlewis password
 POST i am mike01

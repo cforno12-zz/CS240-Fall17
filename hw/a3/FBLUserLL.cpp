@@ -15,7 +15,7 @@ FBLUserLL::FBLUserLL(){
 
 FBLUserLL::~FBLUserLL()
 {
-    if(head) delete head;
+    if(head)delete head;
 }
 
 FBLUserNode* FBLUserLL::get_head(){

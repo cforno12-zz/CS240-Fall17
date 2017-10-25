@@ -24,7 +24,7 @@ FBLUser::~FBLUser(){
     if(feed){
         delete feed;
     }
-    //friends = vector<FBLUser*>();
+    friends = vector<FBLUser*>();
 }
 
 //GETTERS
@@ -76,7 +76,6 @@ void FBLUser::post(string p){
     for (unsigned int i = 0; i < friends.size(); i++) {
         friends[i]->get_feed()->add(post_node);
     }
-    //delete post_obj;
 }
 
 void FBLUser::read(){

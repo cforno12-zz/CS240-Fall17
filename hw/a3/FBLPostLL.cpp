@@ -9,7 +9,9 @@ FBLPostLL::FBLPostLL(){
 }
 
 FBLPostLL::~FBLPostLL(){
-    if(head) delete head;
+    if(head){
+        delete head;
+    }
 }
 
 FBLPostNode* FBLPostLL::get_head(){

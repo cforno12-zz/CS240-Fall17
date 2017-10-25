@@ -9,7 +9,7 @@ FBLPost::FBLPost(string p){
 }
 
 FBLPost::~FBLPost(){
-
+    //cout << "HERE" << endl;
 }
 
 string FBLPost::get_post(){
