@@ -21,11 +21,13 @@ class FBLUserLL {
     //SETTERS
     void set_head(FBLUserNode* h);
     //OTHER FUNCTIONS
+    FBLUserNode* get_last_node();
     void login(string ui, string pass);
     void add(string ui, string pw, string fn, string ln);
     void remove(string ui);
     void print_list();
     bool check_userid(string ui);
+    void sort_users();
 };
 
 #endif

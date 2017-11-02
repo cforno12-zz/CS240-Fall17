@@ -5,6 +5,7 @@
 //user headers
 #include "FBLUserLL.h"
 #include "FBLPostLL.h"
+#include "FBLCommentLL.h"
 
 using namespace std;
 
@@ -47,7 +48,33 @@ void FBLUserLL::login(string ui, string pass){
                         getline(cin, post);
                         user->post(post);
                     } else if(cmd == "READ"){
-                        user->read();
+                        FBLPost* post = user->get_feed()->get_last_node()->get_data();
+                        bool quit = false;
+                        string cmd = "";
+                        cout << "Most recent post:" << post->get_post() << endl;
+                        while(!quit){
+                            cout << "What would you like to do to this post? [\"LIKE\", \"COMMENT\" \"READ_AZ\", \"READ_ZA\", or \"DONE\"]" << endl;
+                            cin >> cmd;
+                            if(cmd == "LIKE"){
+                                post->upvote();
+                            } else if (cmd == "COMMENT"){
+                                string cmmt = "";
+                                getline(cin, cmmt);
+                                FBLComment* temp = new FBLComment(cmmt, user->get_first_name(), user->get_last_name());
+                                FBLCommentNode* temp_node = new FBLCommentNode(temp);
+                                post->add_comment(temp_node);
+                                //put cmmt in the same post in everyone's feed.
+                            } else if(cmd == "READ_AZ"){
+                                post->print_comments_AZ();
+                            } else if (cmd == "READ_ZA"){
+                                post->print_comments_ZA();
+                            } else if (cmd == "DONE"){
+                                quit = true;
+                            }
+                        }
+                        quit = false;
+                        //TODO: pop the last node of the feed.
+                        // user->read();
                     } else if(cmd == "LOGOUT"){
                         quit = true;
                     } else if(cmd == "FRIEND"){
@@ -134,7 +161,8 @@ void FBLUserLL::add(string ui, string pw, string fn, string ln){
         head = temp;
     }
 }
-
+//i created this function in hopes that we would delete users from the linked list.
+// doesn't work either...
 void FBLUserLL::remove(string ui){
     bool deleteFlag = false;
     if(head != nullptr && head->get_next() != nullptr){
@@ -193,16 +221,10 @@ void FBLUserLL::print_list(){
     if(head != nullptr){
         if(!head->get_next()){
             FBLUserNode* curr = head;
-            cout << "-----------------------------------------------" << endl;
-            cout << "User #0" << endl;
             curr->get_data()->print_user();
         } else {
             FBLUserNode* curr = head;
-            int counter = 0;
             while(curr) {
-                cout << "-----------------------------------------------" << endl;
-                cout << "User #" << counter << endl;
-                counter++;
                 curr->get_data()->print_user();
                 curr = curr->get_next();
             }
@@ -212,3 +234,49 @@ void FBLUserLL::print_list(){
         cout << "List is empty." << endl;
     }
 }
+
+void FBLUserLL::sort_users(){
+    //this is a merge sort for users
+
+    //it is described on the internet that this is the best
+    //sort for linked lists
+
+    //FBLUserNode* lastRef = this->get_last_node();
+    FBLUserLL left = FBLUserLL();
+    FBLUserLL right = FBLUserLL();
+
+    //base case
+    if(!head || !head->get_next()){
+        return;
+    }
+
+    //recursive case.
+    FBLUserNode* curr = head;
+    while(curr){
+        //do some stuff boi
+    }
+
+    //divide list into 2 halves
+    //sort the two halfs
+    //merge the two sorted lists
+
+}
+
+FBLUserNode* FBLUserLL::get_last_node(){
+    FBLUserNode* retVal = nullptr;
+    if(head && head->get_next()){
+        FBLUserNode* curr =  head;
+        FBLUserNode* prev = nullptr;
+        while(curr->get_next()){
+            prev = curr;
+            curr = curr->get_next();
+        }
+        retVal = curr;
+    } else if (head){
+        retVal = head;
+    } else {
+        cout << "\t\tThere is nothing in the list." << endl;
+    }
+    return retVal;
+}
+

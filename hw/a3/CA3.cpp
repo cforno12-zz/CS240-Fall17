@@ -14,7 +14,7 @@ int main(){
     string cmd, temp_userid, temp_password, temp_first_name, temp_last_name;
     bool quit = false;
     while (!quit){
-        cout << "Please enter a command: [\"CREATE\", \"LOGIN\", or \"QUIT\"]" << endl;
+        cout << "Please enter a command: [\"CREATE\", \"LOGIN\", \"USERS\", \"SORTUSERS\" or \"QUIT\"]" << endl;
         cin >> cmd;
         if(cmd == "CREATE"){
             cin >> temp_userid;
@@ -34,5 +34,5 @@ int main(){
             cout << "Command not found." << endl;
         }
     }
-    delete linked_list;
+    //delete linked_list;
 }

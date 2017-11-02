@@ -6,6 +6,7 @@
 #include <string.h>
 
 #include "FBLPostNode.h"
+class FBLPostNode;
 
 class FBLPostLL {
  private:
@@ -20,8 +21,10 @@ class FBLPostLL {
     void set_head(FBLPostNode* h);
     //OTHER FUNCTIONS
     void add(FBLPostNode* post_node);
-    void read();
+    //FBLPost* read();
+    void read_helper(FBLPostNode* fpn);
     void print_posts();
+    FBLPostNode* get_last_node();
 };
 
 #endif

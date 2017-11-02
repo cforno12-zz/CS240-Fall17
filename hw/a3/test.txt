@@ -1,0 +1,40 @@
+CREATE ebaule1 pw Evan Baule
+CREATE cforno12 pw Cris Forno
+CREATE egbaule pw Eric Baule
+CREATE mlewis pw Mike Lewis
+LOGIN ebaule1 pw
+POST this is a post01
+POST this is a post02
+POST this is a post03
+MYFRIENDS
+LOGOUT
+LOGIN cforno12 pw
+READ
+LIKE
+READ_AZ
+FRIEND mlewis
+MYFRIENDS
+POST cf 1
+POST cf 2
+POST cf 3
+LOGOUT
+LOGIN mlewis pw
+FRIEND egbaule
+FRIEND ebaule1
+MYFRIENDS
+POST ml 1
+POST ml 2
+POST ml 3
+READ
+COMMENT this is a comment boi
+DONE
+LOGOUT
+LOGIN cforno12 pw
+LOGOUT
+LOGIN ebaule1 pw
+MYWALL
+MYFRIENDS
+POST emb 1
+MYFEED
+LOGOUT
+QUIT
