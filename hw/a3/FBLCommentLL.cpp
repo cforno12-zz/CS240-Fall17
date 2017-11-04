@@ -63,9 +63,7 @@ FBLCommentNode* FBLCommentLL::get_last_node(){
     FBLCommentNode* retVal = nullptr;
     if(head && head->get_next()){
         FBLCommentNode* curr =  head;
-        FBLCommentNode* prev = nullptr;
         while(curr->get_next()){
-            prev = curr;
             curr = curr->get_next();
         }
         retVal = curr;

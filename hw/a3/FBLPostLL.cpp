@@ -76,9 +76,7 @@ FBLPostNode* FBLPostLL::get_last_node(){
     FBLPostNode* retVal = nullptr;
     if(head && head->get_next()){
         FBLPostNode* curr =  head;
-        FBLPostNode* prev = nullptr;
         while(curr->get_next()){
-            prev = curr;
             curr = curr->get_next();
         }
         retVal = curr;

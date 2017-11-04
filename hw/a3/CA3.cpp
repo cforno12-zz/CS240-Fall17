@@ -21,7 +21,9 @@ int main(){
             cin >> temp_password;
             cin >> temp_first_name;
             cin >> temp_last_name;
-            linked_list->add(temp_userid, temp_password, temp_first_name, temp_last_name);
+            FBLUser* new_user = new FBLUser(temp_last_name, temp_first_name, temp_password, temp_userid);
+            FBLUserNode* new_user_node = new FBLUserNode(new_user);
+            linked_list->add_node(new_user_node);
         } else if (cmd == "LOGIN"){
             cin >> temp_userid;
             cin >> temp_password;

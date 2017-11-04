@@ -17,6 +17,16 @@ FBLUser::FBLUser(){
     friends.clear();
 }
 
+FBLUser::FBLUser(string ln, string fn, string pw, string ui){
+    last_name = ln;
+    first_name = fn;
+    password = pw;
+    user_id = ui;
+    feed = new FBLPostLL();
+    wall = new FBLPostLL();
+    friends.clear();
+}
+
 FBLUser::~FBLUser(){
     if(wall){
         delete wall;

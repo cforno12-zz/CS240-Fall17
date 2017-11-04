@@ -246,7 +246,7 @@ void FBLUserLL::print_list(){
 FBLUserLL* FBLUserLL::sort_users(FBLUserLL* main_list){
     //this is a merge sort for users
 
-    //it is described on the internet that this is the best
+    //merge sort is described on the internet that it is the best
     //sort for linked lists
 
     FBLUserNode* this_head = main_list->get_head();
@@ -254,7 +254,7 @@ FBLUserLL* FBLUserLL::sort_users(FBLUserLL* main_list){
     FBLUserLL* right = new FBLUserLL();
 
     //base case
-    if(!this_head->get_next()){
+    if(!this_head->get_next() || !this_head){
         return main_list;
     }
 
@@ -264,12 +264,12 @@ FBLUserLL* FBLUserLL::sort_users(FBLUserLL* main_list){
     while(curr){
         if (a){
             left->add_node(curr);
-            a = !a;
         } else {
             right->add_node(curr);
-            a = !a;
         }
+        a = !a;
         curr = curr->get_next();
+        cout << "while loop #1" << endl;
     }
 
     left = sort_users(left);
@@ -302,20 +302,20 @@ FBLUserLL* FBLUserLL::merge(FBLUserLL* left, FBLUserLL* right){
             result->add_node(right_curr);
             right_curr = right_curr->get_next();
         }
-        //cout << "while loop #2" << endl;
+        cout << "while loop #2" << endl;
     }
 
     while(left_curr){
         cout << "Should I even be doing this? LEFT" << endl;
         result->add_node(left_curr);
         left_curr = left_curr->get_next();
-        //cout << "while loop #3" << endl;
+        cout << "while loop #3" << endl;
     }
     while(right_curr){
         cout << "Should I even be doing this? RIGHT" << endl;
         result->add_node(right_curr);
         right_curr = right_curr->get_next();
-        //cout << "while loop #4" << endl;
+        cout << "while loop #4" << endl;
     }
     return result;
 }
@@ -333,9 +333,7 @@ FBLUserNode* FBLUserLL::get_last_node(){
     FBLUserNode* retVal = nullptr;
     if(head && head->get_next()){
         FBLUserNode* curr =  head;
-        FBLUserNode* prev = nullptr;
         while(curr->get_next()){
-            prev = curr;
             curr = curr->get_next();
         }
         retVal = curr;
