@@ -89,3 +89,21 @@ FBLPostNode* FBLPostLL::get_last_node(){
     }
     return retVal;
 }
+
+FBLPostNode* FBLPostLL::get_penultimum_node(){
+    FBLPostNode* retVal = nullptr;
+    if(head && head->get_next()){
+        FBLPostNode* curr =  head;
+        FBLPostNode* prev = nullptr;
+        while(curr->get_next()){
+            prev = curr;
+            curr = curr->get_next();
+        }
+        retVal = prev;
+    } else if (head){
+        //retVal = head;
+    } else {
+        cout << "\t\tThere is nothing in the list." << endl;
+    }
+    return retVal;
+}

@@ -20,11 +20,12 @@ class FBLPostLL {
     //SETTERS
     void set_head(FBLPostNode* h);
     //OTHER FUNCTIONS
+    FBLPostNode* get_penultimum_node();
+    FBLPostNode* get_last_node();
     void add(FBLPostNode* post_node);
     //FBLPost* read();
     void read_helper(FBLPostNode* fpn);
     void print_posts();
-    FBLPostNode* get_last_node();
 };
 
 #endif

@@ -48,6 +48,7 @@ void FBLUserLL::login(string ui, string pass){
                         getline(cin, post);
                         user->post(post);
                     } else if(cmd == "READ"){
+                        FBLPostNode* penultimum_post = user->get_feed()->get_penultimum_node();
                         FBLPost* post = user->get_feed()->get_last_node()->get_data();
                         bool quit = false;
                         string cmd = "";
@@ -73,6 +74,13 @@ void FBLUserLL::login(string ui, string pass){
                             }
                         }
                         quit = false;
+                        //"popping oldest post in user's feed"
+                        if(penultimum_post){
+                            penultimum_post->set_next(nullptr);
+                        } else {
+                            //there is only the head
+                            head = nullptr;
+                        }
                         //TODO: pop the last node of the feed.
                         // user->read();
                     } else if(cmd == "LOGOUT"){
@@ -235,31 +243,90 @@ void FBLUserLL::print_list(){
     }
 }
 
-void FBLUserLL::sort_users(){
+FBLUserLL* FBLUserLL::sort_users(FBLUserLL* main_list){
     //this is a merge sort for users
 
     //it is described on the internet that this is the best
     //sort for linked lists
 
-    //FBLUserNode* lastRef = this->get_last_node();
-    FBLUserLL left = FBLUserLL();
-    FBLUserLL right = FBLUserLL();
+    FBLUserNode* this_head = main_list->get_head();
+    FBLUserLL* left = new FBLUserLL();
+    FBLUserLL* right = new FBLUserLL();
 
     //base case
-    if(!head || !head->get_next()){
-        return;
+    if(!this_head->get_next()){
+        return main_list;
     }
 
-    //recursive case.
-    FBLUserNode* curr = head;
+    // recursive case
+    FBLUserNode* curr = this_head;
+    bool a = true;
     while(curr){
-        //do some stuff boi
+        if (a){
+            left->add_node(curr);
+            a = !a;
+        } else {
+            right->add_node(curr);
+            a = !a;
+        }
+        curr = curr->get_next();
     }
+
+    left = sort_users(left);
+    right = sort_users(right);
+
+    //delete left;
+    //delete right;
+
+    return merge(left, right);
 
     //divide list into 2 halves
     //sort the two halfs
     //merge the two sorted lists
 
+}
+
+FBLUserLL* FBLUserLL::merge(FBLUserLL* left, FBLUserLL* right){
+    FBLUserLL* result = new FBLUserLL();
+
+    FBLUserNode* left_curr = left->get_head();
+    FBLUserNode* right_curr = right->get_head();
+
+    while(left_curr && right_curr){
+        FBLUser* left_data = left_curr->get_data();
+        FBLUser* right_data = right_curr->get_data();
+        if(left_data->get_last_name() <= right_data->get_last_name()){
+            result->add_node(left_curr);
+            left_curr = left_curr->get_next();
+        } else {
+            result->add_node(right_curr);
+            right_curr = right_curr->get_next();
+        }
+        //cout << "while loop #2" << endl;
+    }
+
+    while(left_curr){
+        cout << "Should I even be doing this? LEFT" << endl;
+        result->add_node(left_curr);
+        left_curr = left_curr->get_next();
+        //cout << "while loop #3" << endl;
+    }
+    while(right_curr){
+        cout << "Should I even be doing this? RIGHT" << endl;
+        result->add_node(right_curr);
+        right_curr = right_curr->get_next();
+        //cout << "while loop #4" << endl;
+    }
+    return result;
+}
+
+void FBLUserLL::add_node(FBLUserNode* node){
+    if(head == nullptr){
+        head = node;
+    } else {
+        node->set_next(head);
+        head = node;
+    }
 }
 
 FBLUserNode* FBLUserLL::get_last_node(){

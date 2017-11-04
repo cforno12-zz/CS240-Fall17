@@ -1,0 +1,5 @@
+CREATE bo44 ye5wecan08 Barack Obama
+CREATE tb12 g1se1e Tom Brady
+USERS
+SORTUSERS
+QUIT

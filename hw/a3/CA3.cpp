@@ -26,8 +26,10 @@ int main(){
             cin >> temp_userid;
             cin >> temp_password;
             linked_list->login(temp_userid, temp_password);
-        } else if (cmd == "PRINT"){
+        } else if (cmd == "USERS"){
             linked_list->print_list();
+        } else if(cmd == "SORTUSERS"){
+            linked_list = linked_list->sort_users(linked_list);
         } else if (cmd == "QUIT"){
             quit = true;
         } else {

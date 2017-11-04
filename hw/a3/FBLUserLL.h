@@ -22,12 +22,14 @@ class FBLUserLL {
     void set_head(FBLUserNode* h);
     //OTHER FUNCTIONS
     FBLUserNode* get_last_node();
+    FBLUserLL* sort_users(FBLUserLL* main_list);
+    FBLUserLL* merge(FBLUserLL* left, FBLUserLL* right);
     void login(string ui, string pass);
     void add(string ui, string pw, string fn, string ln);
+    void add_node(FBLUserNode* node);
     void remove(string ui);
     void print_list();
     bool check_userid(string ui);
-    void sort_users();
 };
 
 #endif
