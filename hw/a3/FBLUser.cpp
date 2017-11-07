@@ -85,10 +85,6 @@ void FBLUser::post(string p){
     }
 }
 
-//FBLPost* FBLUser::read(){
-//    return feed->read();
-//}
-
 void FBLUser::print_feed(){
     feed->print_posts();
 }

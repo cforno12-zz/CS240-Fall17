@@ -43,18 +43,25 @@ void FBLUserLL::login(string ui, string pass){
                 cout << "\tWelcome " << ui << "!"<< endl;
                 do {
                     cout << "\tPlease select a command: [\"POST\", \"READ\", \"FRIEND\", \"MYFRIENDS\", \"MYFEED\", \"MYWALL\", or \"LOGOUT\"]:" << endl;
+                    cout << "\t";
                     cin >> cmd;
                     if(cmd == "POST"){
                         getline(cin, post);
                         user->post(post);
                     } else if(cmd == "READ"){
+                        //cout <<"\t" << endl;
+                        if(!user->get_feed()->get_head()){
+                            cout << "\tNothing to read." << endl;
+                            continue;
+                        }
                         FBLPostNode* penultimum_post = user->get_feed()->get_penultimum_node();
                         FBLPost* post = user->get_feed()->get_last_node()->get_data();
                         bool quit = false;
                         string cmd = "";
-                        cout << "Most recent post:" << post->get_post() << endl;
+                        cout << "\t\tLikes: "<< post->get_likes() << " " << post->get_post() << endl;
                         while(!quit){
-                            cout << "What would you like to do to this post? [\"LIKE\", \"COMMENT\" \"READ_AZ\", \"READ_ZA\", or \"DONE\"]" << endl;
+                            cout << "\t\tWhat would you like to do to this post? [\"LIKE\", \"COMMENT\" \"READ_AZ\", \"READ_ZA\", or \"DONE\"]" << endl;
+                            cout << "\t\t";
                             cin >> cmd;
                             if(cmd == "LIKE"){
                                 post->upvote();
@@ -75,14 +82,14 @@ void FBLUserLL::login(string ui, string pass){
                         }
                         quit = false;
                         //"popping oldest post in user's feed"
+                        //FBLPostNode* new_post = new FBLPostNode(post);
                         if(penultimum_post){
                             penultimum_post->set_next(nullptr);
                         } else {
                             //there is only the head
-                            head = nullptr;
+                            post = nullptr;
                         }
                         //TODO: pop the last node of the feed.
-                        // user->read();
                     } else if(cmd == "LOGOUT"){
                         quit = true;
                     } else if(cmd == "FRIEND"){
@@ -306,13 +313,11 @@ FBLUserLL* FBLUserLL::merge(FBLUserLL* left, FBLUserLL* right){
     }
 
     while(left_curr){
-        cout << "Should I even be doing this? LEFT" << endl;
         result->add_node(left_curr);
         left_curr = left_curr->get_next();
         cout << "while loop #3" << endl;
     }
     while(right_curr){
-        cout << "Should I even be doing this? RIGHT" << endl;
         result->add_node(right_curr);
         right_curr = right_curr->get_next();
         cout << "while loop #4" << endl;
@@ -344,4 +349,3 @@ FBLUserNode* FBLUserLL::get_last_node(){
     }
     return retVal;
 }
-

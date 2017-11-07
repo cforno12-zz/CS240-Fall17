@@ -38,7 +38,7 @@ void FBLCommentLL::print_AZ(){
         FBLCommentNode* curr = head;
         while(curr){
             FBLComment* cmmt = curr->get_data();
-            cout << cmmt->get_first_name() << " " << cmmt->get_last_name() << " commented:" << cmmt->get_comment();
+            cout << cmmt->get_first_name() << " " << cmmt->get_last_name() << " commented:" << cmmt->get_comment() << endl;
             curr = curr->get_next();
         }
     } else {
@@ -51,7 +51,7 @@ void FBLCommentLL::print_ZA(){
         FBLCommentNode* curr = this->get_last_node();
         while(curr){
             FBLComment* cmmt = curr->get_data();
-            cout << cmmt->get_first_name() << " " << cmmt->get_last_name() << " commented:" << cmmt->get_comment();
+            cout << cmmt->get_first_name() << " " << cmmt->get_last_name() << " commented:" << cmmt->get_comment() << endl;
             curr = curr->get_prev();
         }
     } else {

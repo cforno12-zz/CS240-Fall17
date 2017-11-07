@@ -61,8 +61,8 @@ void FBLPostLL::print_posts(){
     if(head != nullptr){
         FBLPostNode* curr = head;
         while(curr != nullptr) {
-            cout << "\t\t\t->";
-            cout << curr->get_data()->get_post() << "# of Likes: " << curr->get_data()->get_likes() <<endl;
+            cout << "\t\t\t-> ";
+            cout <<"Likes: " << curr->get_data()->get_likes() << curr->get_data()->get_post() <<endl;
             curr = curr->get_next();
         }
     } else {
@@ -83,7 +83,7 @@ FBLPostNode* FBLPostLL::get_last_node(){
     } else if (head){
         retVal = head;
     } else {
-        cout << "\t\tThere is nothing in the list." << endl;
+        //cout << "\t\tThere is nothing in the list." << endl;
     }
     return retVal;
 }
@@ -101,7 +101,7 @@ FBLPostNode* FBLPostLL::get_penultimum_node(){
     } else if (head){
         //retVal = head;
     } else {
-        cout << "\t\tThere is nothing in the list." << endl;
+        //cout << "\t\tThere is nothing in the list." << endl;
     }
     return retVal;
 }

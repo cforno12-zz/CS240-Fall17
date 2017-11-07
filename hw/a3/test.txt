@@ -3,24 +3,28 @@ CREATE cforno12 pw Cris Forno
 CREATE egbaule pw Eric Baule
 CREATE mlewis pw Mike Lewis
 LOGIN ebaule1 pw
-POST this is a post01
-POST this is a post02
-POST this is a post03
+FRIEND cforno12
+FRIEND mlewis
+POST this is a evan01
+POST this is a evan02
+POST this is a evan03
 MYFRIENDS
 LOGOUT
 LOGIN cforno12 pw
 READ
 LIKE
+LIKE
+LIKE
+COMMENT i am commenting on evan01 post
 READ_AZ
+DONE
 FRIEND mlewis
 MYFRIENDS
-POST cf 1
+POST this is a cforno1
 POST cf 2
 POST cf 3
 LOGOUT
 LOGIN mlewis pw
-FRIEND egbaule
-FRIEND ebaule1
 MYFRIENDS
 POST ml 1
 POST ml 2
