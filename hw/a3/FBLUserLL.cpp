@@ -358,7 +358,7 @@ void FBLUserLL::add_merge(FBLUserNode* user){
         return;
     }
     FBLUserNode* temp = head;
-    while(temp){
+    while(temp->get_next()){
         temp = temp->get_next();
     }
     temp->set_next(user);
