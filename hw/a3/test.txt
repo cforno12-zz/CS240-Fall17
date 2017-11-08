@@ -1,6 +1,5 @@
 CREATE ebaule1 pw Evan Baule
 CREATE cforno12 pw Cris Forno
-CREATE egbaule pw Eric Baule
 CREATE mlewis pw Mike Lewis
 LOGIN ebaule1 pw
 FRIEND cforno12
@@ -15,30 +14,21 @@ READ
 LIKE
 LIKE
 LIKE
-COMMENT i am commenting on evan01 post
+COMMENT this is cris01
 READ_AZ
 DONE
 FRIEND mlewis
 MYFRIENDS
-POST this is a cforno1
-POST cf 2
-POST cf 3
 LOGOUT
 LOGIN mlewis pw
 MYFRIENDS
-POST ml 1
-POST ml 2
-POST ml 3
 READ
-COMMENT this is a comment boi
+COMMENT this is mike01
 DONE
-LOGOUT
-LOGIN cforno12 pw
 LOGOUT
 LOGIN ebaule1 pw
 MYWALL
 MYFRIENDS
-POST emb 1
 MYFEED
 LOGOUT
 QUIT

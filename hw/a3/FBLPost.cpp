@@ -15,7 +15,9 @@ FBLPost::FBLPost(FBLPost* obj){
     comments = obj->get_comment_list();
 }
 
-FBLPost::~FBLPost(){}
+FBLPost::~FBLPost(){
+    if(comments) delete comments;
+}
 
 string FBLPost::get_post(){
     return post;

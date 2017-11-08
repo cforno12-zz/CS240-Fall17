@@ -9,6 +9,8 @@ using namespace std;
 
 FBLComment::FBLComment(){
     comment = "";
+    user_first_name = "";
+    user_last_name = "";
 }
 
 FBLComment::FBLComment(string c){
