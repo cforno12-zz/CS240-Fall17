@@ -21,8 +21,7 @@ FBLComment::FBLComment(string c, string fn, string ln){
     user_first_name = fn;
     user_last_name = ln;
 }
-FBLComment::~FBLComment(){
-}
+FBLComment::~FBLComment(){}
 
 string FBLComment::get_comment(){
     return comment;

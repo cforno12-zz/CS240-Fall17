@@ -16,7 +16,7 @@ FBLPostNode::FBLPostNode(FBLPost* fbp){
 
 FBLPostNode::~FBLPostNode() {
     if(next) delete next;
-    //if(data) delete data;
+    if(data) delete data;
 }
 
 FBLPost* FBLPostNode::get_data(){

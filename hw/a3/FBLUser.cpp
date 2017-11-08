@@ -34,7 +34,6 @@ FBLUser::~FBLUser(){
     if(feed){
         delete feed;
     }
-    friends = vector<FBLUser*>();
 }
 
 //GETTERS
