@@ -269,10 +269,7 @@ FBLUserLL* FBLUserLL::sort_users(FBLUserLL* main_list){
     // recursive case
     FBLUserNode* curr = this_head;
     bool a = true;
-    int counter = 1;
-    while(curr){
-        cout << counter << endl;
-        counter++;
+    while(curr != nullptr){
         if (a){
             cout << "Adding "<< curr->get_data()->get_last_name() << " to left list." << endl;
             left->add_merge(curr);
@@ -281,11 +278,18 @@ FBLUserLL* FBLUserLL::sort_users(FBLUserLL* main_list){
             right->add_merge(curr);
         }
         a = !a;
+        cout << curr->get_next()->get_data()->get_last_name() << endl;
         curr = curr->get_next();
     }
-    cout << "Made it out of the loop bois." << endl;
-    left = sort_users(left);
-    right = sort_users(right);
+    cout << "left" << endl;
+    left->print_list();
+    cout << "right" << endl;
+    right->print_list();
+    //cout << "out of the loop" << endl;
+    //left = sort_users(left);
+    //cout << "done with left." << endl;
+    //right = sort_users(right);
+    //cout << "done with right." << endl;
 
     //delete left;
     //delete right;
@@ -358,7 +362,7 @@ void FBLUserLL::add_merge(FBLUserNode* user){
         return;
     }
     FBLUserNode* temp = head;
-    while(temp->get_next()){
+    while(temp->get_next() != nullptr){
         temp = temp->get_next();
     }
     temp->set_next(user);

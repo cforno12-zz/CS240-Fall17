@@ -1,0 +1,5 @@
+Tail recursion the last subroutine a recursive function calls.
+Programming a tail recursive function is better because it reuses the same stack frame every time it is called.
+The return value of any given recursive step is the same as the return value of the next recursive call.
+This could be helpful to avoid a stack overflow.
+
