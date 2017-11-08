@@ -9,6 +9,12 @@ FBLPost::FBLPost(string p){
     comments = new FBLCommentLL();
 }
 
+FBLPost::FBLPost(FBLPost* obj){
+    post = obj->get_post();
+    likes = obj->get_likes();
+    comments = obj->get_comment_list();
+}
+
 FBLPost::~FBLPost(){}
 
 string FBLPost::get_post(){
@@ -20,6 +26,9 @@ void FBLPost::set_post(string p){
 }
 int FBLPost::get_likes(){
     return likes;
+}
+FBLCommentLL* FBLPost::get_comment_list(){
+    return comments;
 }
 void FBLPost::upvote(){
     likes++;

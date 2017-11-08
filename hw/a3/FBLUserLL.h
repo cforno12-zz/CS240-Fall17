@@ -30,6 +30,7 @@ class FBLUserLL {
     void remove(string ui);
     void print_list();
     bool check_userid(string ui);
+    void add_merge(FBLUserNode* user);
 };
 
 #endif

@@ -33,29 +33,29 @@ void FBLCommentLL::add(FBLCommentNode* post_node){
 }
 
 void FBLCommentLL::print_AZ(){
-    cout << "Printing in order..." << endl;
+    cout << "\t\t\tPrinting in order..." << endl;
     if(head){
         FBLCommentNode* curr = head;
         while(curr){
             FBLComment* cmmt = curr->get_data();
-            cout << cmmt->get_first_name() << " " << cmmt->get_last_name() << " commented:" << cmmt->get_comment() << endl;
+            cout << "\t\t\t" << cmmt->get_first_name() << " " << cmmt->get_last_name() << " commented:" << cmmt->get_comment() << endl;
             curr = curr->get_next();
         }
     } else {
-        cout << "There are no comments to display." << endl;
+        cout << "\t\t\tThere are no comments to display." << endl;
     }
 }
 void FBLCommentLL::print_ZA(){
     if(head){
-        cout << "Printing in reverse order..." << endl;
+        cout << "\t\t\tPrinting in reverse order..." << endl;
         FBLCommentNode* curr = this->get_last_node();
         while(curr){
             FBLComment* cmmt = curr->get_data();
-            cout << cmmt->get_first_name() << " " << cmmt->get_last_name() << " commented:" << cmmt->get_comment() << endl;
+            cout <<"\t\t\t" <<cmmt->get_first_name() << " " << cmmt->get_last_name() << " commented:" << cmmt->get_comment() << endl;
             curr = curr->get_prev();
         }
     } else {
-        cout << "There are no comments to display." << endl;
+        cout << "\t\t\tThere are no comments to display." << endl;
     }
 }
 

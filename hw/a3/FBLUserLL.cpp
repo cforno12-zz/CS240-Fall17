@@ -54,13 +54,12 @@ void FBLUserLL::login(string ui, string pass){
                             cout << "\tNothing to read." << endl;
                             continue;
                         }
-                        FBLPostNode* penultimum_post = user->get_feed()->get_penultimum_node();
                         FBLPost* post = user->get_feed()->get_last_node()->get_data();
                         bool quit = false;
                         string cmd = "";
                         cout << "\t\tLikes: "<< post->get_likes() << " " << post->get_post() << endl;
                         while(!quit){
-                            cout << "\t\tWhat would you like to do to this post? [\"LIKE\", \"COMMENT\" \"READ_AZ\", \"READ_ZA\", or \"DONE\"]" << endl;
+                            cout << "\t\tWhat would you like to do to this post? [\"LIKE\", \"COMMENT\" \"READ_AZ\", \"READ_ZA\", or \"DONE\"]:" << endl;
                             cout << "\t\t";
                             cin >> cmd;
                             if(cmd == "LIKE"){
@@ -78,16 +77,18 @@ void FBLUserLL::login(string ui, string pass){
                                 post->print_comments_ZA();
                             } else if (cmd == "DONE"){
                                 quit = true;
+                            } else {
+                                cout << "\t\tUnknown command." << endl;
                             }
                         }
                         quit = false;
                         //"popping oldest post in user's feed"
-                        //FBLPostNode* new_post = new FBLPostNode(post);
+                        FBLPostNode* penultimum_post = user->get_feed()->get_penultimum_node();
                         if(penultimum_post){
-                            penultimum_post->set_next(nullptr);
+                            user->get_feed()->get_penultimum_node()->set_next(nullptr);
                         } else {
                             //there is only the head
-                            post = nullptr;
+                            user->get_feed()->set_head(nullptr);
                         }
                         //TODO: pop the last node of the feed.
                     } else if(cmd == "LOGOUT"){
@@ -268,24 +269,28 @@ FBLUserLL* FBLUserLL::sort_users(FBLUserLL* main_list){
     // recursive case
     FBLUserNode* curr = this_head;
     bool a = true;
+    int counter = 1;
     while(curr){
+        cout << counter << endl;
+        counter++;
         if (a){
-            left->add_node(curr);
+            cout << "Adding "<< curr->get_data()->get_last_name() << " to left list." << endl;
+            left->add_merge(curr);
         } else {
-            right->add_node(curr);
+            cout << "Adding "<< curr->get_data()->get_last_name() << " to right list." << endl;
+            right->add_merge(curr);
         }
         a = !a;
         curr = curr->get_next();
-        cout << "while loop #1" << endl;
     }
-
+    cout << "Made it out of the loop bois." << endl;
     left = sort_users(left);
     right = sort_users(right);
 
     //delete left;
     //delete right;
-
-    return merge(left, right);
+    return nullptr;
+    //return merge(left, right);
 
     //divide list into 2 halves
     //sort the two halfs
@@ -303,24 +308,21 @@ FBLUserLL* FBLUserLL::merge(FBLUserLL* left, FBLUserLL* right){
         FBLUser* left_data = left_curr->get_data();
         FBLUser* right_data = right_curr->get_data();
         if(left_data->get_last_name() <= right_data->get_last_name()){
-            result->add_node(left_curr);
+            result->add_merge(left_curr);
             left_curr = left_curr->get_next();
         } else {
-            result->add_node(right_curr);
+            result->add_merge(right_curr);
             right_curr = right_curr->get_next();
         }
-        cout << "while loop #2" << endl;
     }
 
     while(left_curr){
         result->add_node(left_curr);
         left_curr = left_curr->get_next();
-        cout << "while loop #3" << endl;
     }
     while(right_curr){
         result->add_node(right_curr);
         right_curr = right_curr->get_next();
-        cout << "while loop #4" << endl;
     }
     return result;
 }
@@ -348,4 +350,16 @@ FBLUserNode* FBLUserLL::get_last_node(){
         cout << "\t\tThere is nothing in the list." << endl;
     }
     return retVal;
+}
+
+void FBLUserLL::add_merge(FBLUserNode* user){
+    if(!head) {
+        head = user;
+        return;
+    }
+    FBLUserNode* temp = head;
+    while(temp){
+        temp = temp->get_next();
+    }
+    temp->set_next(user);
 }

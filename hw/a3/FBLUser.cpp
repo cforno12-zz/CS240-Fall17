@@ -78,10 +78,11 @@ void FBLUser::print_user(){
 
 void FBLUser::post(string p){
     FBLPost* post_obj = new FBLPost(p);
-    FBLPostNode* post_node = new FBLPostNode(post_obj);
-    wall->add(post_node);
+    FBLPostNode* wall_node = new FBLPostNode(post_obj);
+    wall->add(wall_node);
     for (unsigned int i = 0; i < friends.size(); i++) {
-        friends[i]->get_feed()->add(post_node);
+        FBLPostNode* feed_node = new FBLPostNode(post_obj);
+        friends[i]->get_feed()->add(feed_node);
     }
 }
 

@@ -17,10 +17,12 @@ class FBLPost {
  public:
     //CONSTRUCTOR
     FBLPost(string p);
+    FBLPost(FBLPost* obj);
     ~FBLPost();
     //GETTERS
     string get_post();
     int get_likes();
+    FBLCommentLL* get_comment_list();
     //SETTERS
     void set_post(string p);
     //OTHER FUNCTIONS
