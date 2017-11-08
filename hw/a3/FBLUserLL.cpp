@@ -240,7 +240,7 @@ void FBLUserLL::print_list(){
             curr->get_data()->print_user();
         } else {
             FBLUserNode* curr = head;
-            while(curr) {
+            while(curr != nullptr) {
                 curr->get_data()->print_user();
                 curr = curr->get_next();
             }
@@ -262,7 +262,7 @@ FBLUserLL* FBLUserLL::sort_users(FBLUserLL* main_list){
     FBLUserLL* right = new FBLUserLL();
 
     //base case
-    if(!this_head->get_next() || !this_head){
+    if(this_head->get_next() == nullptr || this_head == nullptr){
         return main_list;
     }
 
@@ -270,31 +270,25 @@ FBLUserLL* FBLUserLL::sort_users(FBLUserLL* main_list){
     FBLUserNode* curr = this_head;
     bool a = true;
     while(curr != nullptr){
+        FBLUser* obj = curr->get_data();
         if (a){
-            cout << "Adding "<< curr->get_data()->get_last_name() << " to left list." << endl;
-            left->add_merge(curr);
+            FBLUserNode* new_left = new FBLUserNode(obj);
+            left->add_merge(new_left);
         } else {
-            cout << "Adding "<< curr->get_data()->get_last_name() << " to right list." << endl;
-            right->add_merge(curr);
+            FBLUserNode* new_right = new FBLUserNode(obj);
+            right->add_merge(new_right);
         }
         a = !a;
-        cout << curr->get_next()->get_data()->get_last_name() << endl;
         curr = curr->get_next();
     }
-    cout << "left" << endl;
-    left->print_list();
-    cout << "right" << endl;
-    right->print_list();
-    //cout << "out of the loop" << endl;
-    //left = sort_users(left);
-    //cout << "done with left." << endl;
-    //right = sort_users(right);
-    //cout << "done with right." << endl;
+
+    left = sort_users(left);
+    right = sort_users(right);
+
 
     //delete left;
     //delete right;
-    return nullptr;
-    //return merge(left, right);
+    return merge(left, right);
 
     //divide list into 2 halves
     //sort the two halfs
@@ -304,7 +298,6 @@ FBLUserLL* FBLUserLL::sort_users(FBLUserLL* main_list){
 
 FBLUserLL* FBLUserLL::merge(FBLUserLL* left, FBLUserLL* right){
     FBLUserLL* result = new FBLUserLL();
-
     FBLUserNode* left_curr = left->get_head();
     FBLUserNode* right_curr = right->get_head();
 
@@ -312,20 +305,24 @@ FBLUserLL* FBLUserLL::merge(FBLUserLL* left, FBLUserLL* right){
         FBLUser* left_data = left_curr->get_data();
         FBLUser* right_data = right_curr->get_data();
         if(left_data->get_last_name() <= right_data->get_last_name()){
-            result->add_merge(left_curr);
+            FBLUserNode* new_left = new FBLUserNode(left_data);
+            result->add_merge(new_left);
             left_curr = left_curr->get_next();
         } else {
-            result->add_merge(right_curr);
+            FBLUserNode* new_right = new FBLUserNode(right_data);
+            result->add_merge(new_right);
             right_curr = right_curr->get_next();
         }
     }
 
     while(left_curr){
-        result->add_node(left_curr);
+        FBLUserNode* new_left = new FBLUserNode(left_curr->get_data());
+        result->add_merge(new_left);
         left_curr = left_curr->get_next();
     }
     while(right_curr){
-        result->add_node(right_curr);
+        FBLUserNode* new_right = new FBLUserNode(right_curr->get_data());
+        result->add_merge(new_right);
         right_curr = right_curr->get_next();
     }
     return result;
@@ -334,6 +331,7 @@ FBLUserLL* FBLUserLL::merge(FBLUserLL* left, FBLUserLL* right){
 void FBLUserLL::add_node(FBLUserNode* node){
     if(head == nullptr){
         head = node;
+        head->set_next(nullptr);
     } else {
         node->set_next(head);
         head = node;
@@ -359,6 +357,7 @@ FBLUserNode* FBLUserLL::get_last_node(){
 void FBLUserLL::add_merge(FBLUserNode* user){
     if(!head) {
         head = user;
+        head->set_next(nullptr);
         return;
     }
     FBLUserNode* temp = head;
