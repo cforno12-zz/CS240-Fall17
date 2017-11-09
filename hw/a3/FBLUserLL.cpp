@@ -86,13 +86,11 @@ void FBLUserLL::login(string ui, string pass){
                         FBLPostNode* penultimum_post = user->get_feed()->get_penultimum_node();
                         if(penultimum_post){
                             user->get_feed()->get_penultimum_node()->set_next(nullptr);
-                            delete user->get_feed()->get_last_node();
                         } else {
                             //there is only the head
                             user->get_feed()->set_head(nullptr);
-                            delete user->get_feed()->get_head();
                         }
-                        //TODO: pop the last node of the feed.
+                        //TODO: pop the last node of the feed. DONE
                     } else if(cmd == "LOGOUT"){
                         quit = true;
                     } else if(cmd == "FRIEND"){
@@ -287,9 +285,9 @@ FBLUserLL* FBLUserLL::sort_users(FBLUserLL* main_list){
     left = sort_users(left);
     right = sort_users(right);
 
-    FBLUserLL* result = merge(left, right); 
-    delete left;
-    delete right;
+    FBLUserLL* result = merge(left, right);
+    //if(left) delete left;
+    //if (right) delete right;
     return result;
 
     //divide list into 2 halves

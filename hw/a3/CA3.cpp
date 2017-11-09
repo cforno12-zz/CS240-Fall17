@@ -36,7 +36,6 @@ int main(){
             linked_list->print_list();
         } else if(cmd == "SORTUSERS"){
             linked_list = linked_list->sort_users(linked_list);
-            linked_list->print_list();
         } else if (cmd == "QUIT"){
             quit = true;
         } else {

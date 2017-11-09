@@ -1,6 +1,7 @@
 CREATE ebaule1 pw Evan Baule
-CREATE cforno12 pw Cris Forno
 CREATE mlewis pw Mike Lewis
+CREATE cforno12 pw Cris Forno
+USERS
 LOGIN ebaule1 pw
 FRIEND cforno12
 FRIEND mlewis
@@ -31,6 +32,4 @@ MYWALL
 MYFRIENDS
 MYFEED
 LOGOUT
-SORTUSERS
-USERS
 QUIT

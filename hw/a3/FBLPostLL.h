@@ -10,10 +10,12 @@ class FBLPostNode;
 
 class FBLPostLL {
  private:
+    bool iswall;
     FBLPostNode* head;
  public:
     //CONSTRUCTOR
     FBLPostLL();
+    FBLPostLL(bool wall);
     ~FBLPostLL();
     //GETTERS
     FBLPostNode* get_head();

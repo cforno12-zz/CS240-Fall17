@@ -12,8 +12,8 @@ FBLUser::FBLUser(){
     first_name = "";
     password = "";
     user_id = "";
-    feed = new FBLPostLL();
-    wall = new FBLPostLL();
+    feed = new FBLPostLL(false);
+    wall = new FBLPostLL(true);
     friends.clear();
 }
 
@@ -22,8 +22,8 @@ FBLUser::FBLUser(string ln, string fn, string pw, string ui){
     first_name = fn;
     password = pw;
     user_id = ui;
-    feed = new FBLPostLL();
-    wall = new FBLPostLL();
+    feed = new FBLPostLL(false);
+    wall = new FBLPostLL(true);
     friends.clear();
 }
 

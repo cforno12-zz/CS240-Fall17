@@ -8,6 +8,11 @@ FBLPostLL::FBLPostLL(){
     head = nullptr;
 }
 
+FBLPostLL::FBLPostLL(bool wall){
+    head = nullptr;
+    iswall = wall;
+}
+
 FBLPostLL::~FBLPostLL(){
     if(head){
         delete head;

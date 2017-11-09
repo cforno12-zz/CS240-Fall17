@@ -3,4 +3,5 @@ CREATE tb12 g1se1e Tom Brady
 CREATE joeschmoe pw Joe Schmo
 USERS
 SORTUSERS
+USERS
 QUIT

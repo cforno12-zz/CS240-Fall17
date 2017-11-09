@@ -15,8 +15,8 @@ FBLPostNode::FBLPostNode(FBLPost* fbp){
 }
 
 FBLPostNode::~FBLPostNode() {
-    if(next) delete next;
-    if(data) delete data;
+    if(next != nullptr) delete next;
+    //if(data != nullptr) delete data;
 }
 
 FBLPost* FBLPostNode::get_data(){
