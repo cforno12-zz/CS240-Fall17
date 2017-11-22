@@ -18,6 +18,6 @@ compile: $(SOURCE)
 clean:
 	rm -f *.o run
 
-compress:
+compress: clean
 	tar -cvvf Forno_Cristobal_cforno1_CA4.tar *.* Makefile
 	gzip Forno_Cristobal_cforno_CA4.tar

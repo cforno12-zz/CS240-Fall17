@@ -23,7 +23,7 @@ bool Dish::insert(string s){
         main.push_back(str);
     } else {
         //put in main vector
-        String_obj* str = new String_obj(s, 0, 0);
+        String_obj* str = new String_obj(s, -1, -1);
         main.push_back(str);
         //put index to the end of the length heap
         lH.push_back(curr_idx);
@@ -32,21 +32,24 @@ bool Dish::insert(string s){
         do {
             if(main[lH[temp]]->get_data().length() < main[lH[parent_idx]]->get_data().length()) {
                 swap_lH(temp, parent_idx);
+                main[lH[temp]]->set_lH_idx(temp);
+                main[lH[parent_idx]]->set_lH_idx(parent_idx);
                 temp = parent_idx;
                 parent_idx = get_parent_idx(parent_idx);
             } else {
                 break;
             }
         } while(temp != 0);
-
         str->set_lH_idx(temp);
         //now the alpha vector
         alpha.push_back(curr_idx);
         parent_idx = get_parent_idx(curr_idx);
         temp = curr_idx;
         do {
-            if(main[alpha[temp]] < main[alpha[parent_idx]]) {
+            if(main[alpha[temp]]->get_data() < main[alpha[parent_idx]]->get_data()) {
                 swap_alpha(temp, parent_idx);
+                main[alpha[temp]]->set_alpha_idx(temp);
+                main[alpha[parent_idx]]->set_alpha_idx(parent_idx);
                 temp = parent_idx;
                 parent_idx = get_parent_idx(parent_idx);
             } else {
@@ -61,11 +64,16 @@ bool Dish::insert(string s){
 
 int Dish::find(string s){
     int retVal = -1;
+    bool got_it = false;
     for (int i = 0; i < (int)main.size(); i++){
         retVal++;
         if(main[i]->get_data() == s){
+            got_it = true;
             break;
         }
+    }
+    if(!got_it){
+        retVal = -1;
     }
     return retVal;
 }
@@ -74,7 +82,12 @@ bool Dish::capitalize(int k){
     if(k > curr_idx){
         return false;
     }
-    main[k]->get_data()[0] = toupper(main[k]->get_data()[0]);
+    char c = toupper(main[k]->get_data()[0]);
+    string str(1, c);
+    for(int i = 1; i < (int)main[k]->get_data().length(); i++){
+        str += main[k]->get_data()[i];
+    }
+    main[k]->set_data(str);
     heapify_alpha(main[k]->get_alpha_idx());
     return true;
 }
@@ -83,9 +96,11 @@ bool Dish::all_caps(int k){
     if(k > curr_idx){
         return false;
     }
+    string buff;
     for(int i = 0; i < (int)main[k]->get_data().length(); i++){
-        main[k]->get_data()[i] = toupper(main[k]->get_data()[i]);
+        buff += toupper(main[k]->get_data()[i]);
     }
+    main[k]->set_data(buff);
     heapify_alpha(main[k]->get_alpha_idx());
     return true;
 }
@@ -96,7 +111,9 @@ bool Dish::truncate(int k, int i){
     } else if (i > (int)main[k]->get_data().length()){
         return true;
     }
-    main[k]->get_data().resize(i);
+    string new_str = main[k]->get_data();
+    new_str.resize(i);
+    main[k]->set_data(new_str);
     heapify_lH(main[k]->get_lH_idx());
     return true;
 }
@@ -126,7 +143,7 @@ void Dish::swap_lH(int s, int p){
 void Dish::print_main(){
     cout << "[ ";
     for (int i = 0; i < (int)main.size(); i++){
-        cout << main[i]->get_data() << " ";
+        cout << main[i]->get_data() << ", lH_idx: " << main[i]->get_lH_idx() << ", alpha_idx: " << main[i]->get_alpha_idx() << " // ";
     }
     cout << "]" << endl;
 }
@@ -152,13 +169,15 @@ void Dish::print_lH(){
     }
     cout << "]" << endl;
 }
-//its not working bc you are inputting the index of main...
+
 void Dish::heapify_lH(int k){
     int parent_idx = get_parent_idx(k);
     int temp = k;
     do {
         if(main[lH[temp]]->get_data().length() < main[lH[parent_idx]]->get_data().length()) {
             swap_lH(temp, parent_idx);
+            main[lH[temp]]->set_lH_idx(temp);
+            main[lH[parent_idx]]->set_lH_idx(parent_idx);
             temp = parent_idx;
             parent_idx = get_parent_idx(parent_idx);
         } else {
@@ -173,6 +192,8 @@ void Dish::heapify_alpha(int k){
     do {
         if(main[alpha[temp]]->get_data() < main[alpha[parent_idx]]->get_data()) {
             swap_alpha(temp, parent_idx);
+            main[alpha[temp]]->set_alpha_idx(temp);
+            main[alpha[parent_idx]]->set_alpha_idx(parent_idx);
             temp = parent_idx;
             parent_idx = get_parent_idx(parent_idx);
         } else {

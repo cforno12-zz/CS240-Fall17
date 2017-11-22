@@ -1,0 +1,12 @@
+i swollen
+i hooligan
+i grind
+i friendless
+i blunt
+i closeup
+p
+t 3 2
+p
+s
+gf
+q
